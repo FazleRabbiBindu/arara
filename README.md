@@ -1,6 +1,6 @@
-# StyleLib - CSS Utility Framework
+# ArarA - CSS Utility Library
 
-A modern, lightweight CSS utility library built with SCSS for rapid UI development. StyleLib provides a comprehensive set of utility classes for typography, spacing, borders, grid layouts, and responsive design.
+Trying to build a css uitlity library maybe some component style and components.
 
 ## Table of Contents
 
