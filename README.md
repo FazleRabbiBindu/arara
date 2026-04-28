@@ -372,4 +372,4 @@ Created and maintained by **Md. Fazle Rabbi Bindu**
 
 ---
 
-**Happy styling with StyleLib! **
+**Happy styling with ArarA! **
