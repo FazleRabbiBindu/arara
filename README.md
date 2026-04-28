@@ -2,7 +2,7 @@
 
 A modern, lightweight CSS utility library built with SCSS for rapid UI development. StyleLib provides a comprehensive set of utility classes for typography, spacing, borders, grid layouts, and responsive design.
 
-## 📋 Table of Contents
+## Table of Contents
 
 - [Features](#features)
 - [Quick Start](#quick-start)
@@ -16,7 +16,7 @@ A modern, lightweight CSS utility library built with SCSS for rapid UI developme
 
 ---
 
-## ✨ Features
+## Features
 
 - **Utility-First Design** – Build UIs quickly with pre-defined utility classes
 - **Responsive Support** – Built-in breakpoints for mobile, tablet, and desktop
@@ -28,19 +28,19 @@ A modern, lightweight CSS utility library built with SCSS for rapid UI developme
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Option 1: CDN (Coming Soon)
 ```html
-<link rel="stylesheet" href="https://cdn.stylelib.dev/style.css">
+<link rel="stylesheet" href="https://cdn.arara.dev/style.css">
 ```
 
 ### Option 2: Local Installation
 
 1. **Clone or download the repository**
    ```bash
-   git clone https://github.com/yourusername/style-lib.git
-   cd style-lib
+   git clone https://github.com/FazleRabbiBindu/arara.git
+   cd arara
    ```
 
 2. **Link the compiled stylesheet**
@@ -58,7 +58,7 @@ A modern, lightweight CSS utility library built with SCSS for rapid UI developme
 
 ---
 
-## 📦 Installation
+## Installation
 
 ### Requirements
 - Node.js (v14 or higher)
@@ -94,10 +94,10 @@ This will recompile the SCSS automatically when you make changes.
 
 ---
 
-## 📁 File Structure
+## File Structure
 
 ```
-style-lib/
+arara/
 ├── src/scss/
 │   ├── main.scss              # Main entry point
 │   ├── abstract/
@@ -125,7 +125,7 @@ style-lib/
 
 ---
 
-## 🎨 Core Utilities
+## Core Utilities
 
 ### Typography
 
@@ -219,7 +219,7 @@ Utilities for margin and padding.
 
 ---
 
-## 📚 Documentation
+## Documentation
 
 ### Official Documentation Site
 
@@ -251,7 +251,7 @@ Open `index.html` in your browser to explore interactive examples for:
 
 ---
 
-## 🔨 Build & Development
+## Build & Development
 
 ### Available Commands
 
@@ -283,13 +283,13 @@ Edit `src/scss/abstract/_variables.scss` to customize:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! To contribute:
 
 1. **Fork the repository**
    ```bash
-   git clone https://github.com/yourusername/style-lib.git
+   git clone https://github.com/FazleRabbiBindu/arara.git
    ```
 
 2. **Create a feature branch**
@@ -317,7 +317,7 @@ Contributions are welcome! To contribute:
 
 ---
 
-## 📋 Guidelines
+## Guidelines
 
 ### Naming Conventions
 
@@ -335,33 +335,33 @@ Contributions are welcome! To contribute:
 
 ---
 
-## 📝 Version
+## Version
 
 **Current Version:** 0.0.1 (Alpha)
 
 ---
 
-## 📄 License
+## License
 
 StyleLib is licensed under the MIT License. See the LICENSE file for details.
 
 ---
 
-## 🙏 Credits
+## Credits
 
 Created and maintained by **Md. Fazle Rabbi Bindu**
 
 ---
 
-## 📞 Support
+## Support
 
-- 📧 **Email:** [your-email@example.com]
-- 🐛 **Bug Reports:** [GitHub Issues]
-- 💬 **Discussions:** [GitHub Discussions]
+- **Email:** fazlerabbibindu@gmail.com
+- **Bug Reports:** [GitHub Issues]
+- **Discussions:** [GitHub Discussions]
 
 ---
 
-## 🗺️ Roadmap
+## Roadmap
 
 - [ ] Complete v0.1.0 with all core utilities
 - [ ] Add flexbox utilities
@@ -372,4 +372,4 @@ Created and maintained by **Md. Fazle Rabbi Bindu**
 
 ---
 
-**Happy styling with StyleLib! 🎉**
+**Happy styling with StyleLib! **
