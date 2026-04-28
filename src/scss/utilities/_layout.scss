@@ -1,0 +1,50 @@
+@use 'sass:map' as map;
+@use '../abstract' as abs;
+
+.w-full { width: 100% !important; }
+.max-w-full { max-width: 100% !important; }
+.max-w-screen-sm { max-width: map.get(abs.$breakpoints, "sm") !important; }
+.max-w-screen-md { max-width: map.get(abs.$breakpoints, "md") !important; }
+.max-w-screen-lg { max-width: map.get(abs.$breakpoints, "lg") !important; }
+
+.flex { display: flex !important; }
+.d-flex { display: flex !important; }
+.d-inline-flex { display: inline-flex !important; }
+.items-center { align-items: center !important; }
+.justify-between { justify-content: space-between !important; }
+.justify-center { justify-content: center !important; }
+.flex-column { flex-direction: column !important; }
+
+@each $key, $value in abs.$spacers {
+  .gap-#{$key} { gap: $value !important; }
+}
+
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+
+.hidden { display: none !important; }
+.block { display: block !important; }
+.inline-block { display: inline-block !important; }
+.overflow-hidden { overflow: hidden !important; }
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.sticky-after-nav {
+  position: sticky;
+  top: 70px; // Keep sidebar below the navbar when scrolling
+  z-index: 1020;
+  align-self: start;
+}
+
+.h-screen {
+  height: 100vh !important;
+}
+
+.overflow-y-auto {
+  overflow-y: auto !important;
+}

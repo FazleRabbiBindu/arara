@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '../abstract' as abs;
+
+.card {
+  background-color: #fff;
+  border-radius: map.get(abs.$radii, "lg");
+  box-shadow: map.get(abs.$shadows, "md");
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  &-header, &-footer {
+    padding: map.get(abs.$spacers, "3");
+    background-color: rgba(0,0,0,0.03);
+  }
+
+  &-footer {
+    border-top: 1px solid map.get(abs.$colors, "slate-200");
+  }
+
+  &-body {
+    padding: map.get(abs.$spacers, "4");
+    flex: 1 1 auto;
+  }
+
+  &-title {
+    font-size: 1.25rem;
+    margin-bottom: map.get(abs.$spacers, "2");
+  }
+}

@@ -1,0 +1,367 @@
+// src/scss/utilities/_grid.scss
+@use 'sass:math';
+@use '../abstract' as abs;
+
+// ----------------------------------------------
+//  Display utilities (required for grid to work)
+// ----------------------------------------------
+.grid {
+  display: grid;
+}
+.inline-grid {
+  display: inline-grid;
+}
+
+// ----------------------------------------------
+//  Grid template columns
+// ----------------------------------------------
+// .grid-cols-<number>
+@for $i from 1 through 12 {
+  .grid-cols-#{$i} {
+    grid-template-columns: repeat($i, minmax(0, 1fr));
+  }
+}
+.grid-cols-none {
+  grid-template-columns: none;
+}
+.grid-cols-subgrid {
+  grid-template-columns: subgrid;
+}
+
+// ----------------------------------------------
+//  Grid template rows
+// ----------------------------------------------
+@for $i from 1 through 12 {
+  .grid-rows-#{$i} {
+    grid-template-rows: repeat($i, minmax(0, 1fr));
+  }
+}
+.grid-rows-none {
+  grid-template-rows: none;
+}
+.grid-rows-subgrid {
+  grid-template-rows: subgrid;
+}
+
+// ----------------------------------------------
+//  Column span
+// ----------------------------------------------
+@for $i from 1 through 12 {
+  .col-span-#{$i} {
+    grid-column: span $i / span $i;
+  }
+}
+.col-span-full {
+  grid-column: 1 / -1;
+}
+
+// ----------------------------------------------
+//  Column start / end (line numbers 1–13)
+// ----------------------------------------------
+$max-lines: 13;
+
+@for $i from 1 through $max-lines {
+  .col-start-#{$i} {
+    grid-column-start: $i;
+  }
+  .\-col-start-#{$i} {
+    grid-column-start: calc(#{$i} * -1);
+  }
+  .col-end-#{$i} {
+    grid-column-end: $i;
+  }
+  .\-col-end-#{$i} {
+    grid-column-end: calc(#{$i} * -1);
+  }
+}
+.col-start-auto {
+  grid-column-start: auto;
+}
+.col-end-auto {
+  grid-column-end: auto;
+}
+
+// ----------------------------------------------
+//  Column shorthand
+// ----------------------------------------------
+.col-auto {
+  grid-column: auto;
+}
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    grid-column: $i;
+  }
+  .\-col-#{$i} {
+    grid-column: calc(#{$i} * -1);
+  }
+}
+
+// ----------------------------------------------
+//  Row span
+// ----------------------------------------------
+@for $i from 1 through 12 {
+  .row-span-#{$i} {
+    grid-row: span $i / span $i;
+  }
+}
+.row-span-full {
+  grid-row: 1 / -1;
+}
+
+// ----------------------------------------------
+//  Row start / end (line numbers 1–13)
+// ----------------------------------------------
+@for $i from 1 through $max-lines {
+  .row-start-#{$i} {
+    grid-row-start: $i;
+  }
+  .\-row-start-#{$i} {
+    grid-row-start: calc(#{$i} * -1);
+  }
+  .row-end-#{$i} {
+    grid-row-end: $i;
+  }
+  .\-row-end-#{$i} {
+    grid-row-end: calc(#{$i} * -1);
+  }
+}
+.row-start-auto {
+  grid-row-start: auto;
+}
+.row-end-auto {
+  grid-row-end: auto;
+}
+
+// ----------------------------------------------
+//  Row shorthand
+// ----------------------------------------------
+.row-auto {
+  grid-row: auto;
+}
+@for $i from 1 through 12 {
+  .row-#{$i} {
+    grid-row: $i;
+  }
+  .\-row-#{$i} {
+    grid-row: calc(#{$i} * -1);
+  }
+}
+
+// ----------------------------------------------
+//  Grid auto flow
+// ----------------------------------------------
+.grid-flow-row {
+  grid-auto-flow: row;
+}
+.grid-flow-col {
+  grid-auto-flow: column;
+}
+.grid-flow-dense {
+  grid-auto-flow: dense;
+}
+.grid-flow-row-dense {
+  grid-auto-flow: row dense;
+}
+.grid-flow-col-dense {
+  grid-auto-flow: column dense;
+}
+
+// ----------------------------------------------
+//  Auto columns
+// ----------------------------------------------
+.auto-cols-auto {
+  grid-auto-columns: auto;
+}
+.auto-cols-min {
+  grid-auto-columns: min-content;
+}
+.auto-cols-max {
+  grid-auto-columns: max-content;
+}
+.auto-cols-fr {
+  grid-auto-columns: minmax(0, 1fr);
+}
+
+// ----------------------------------------------
+//  Auto rows
+// ----------------------------------------------
+.auto-rows-auto {
+  grid-auto-rows: auto;
+}
+.auto-rows-min {
+  grid-auto-rows: min-content;
+}
+.auto-rows-max {
+  grid-auto-rows: max-content;
+}
+.auto-rows-fr {
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+// ----------------------------------------------
+//  Responsive variants (uses abs.$breakpoints)
+// ----------------------------------------------
+@each $name, $width in abs.$breakpoints {
+  @include abs.break($name) {
+    // grid-cols-*
+    @for $i from 1 through 12 {
+      .#{$name}\:grid-cols-#{$i} {
+        grid-template-columns: repeat($i, minmax(0, 1fr));
+      }
+    }
+    .#{$name}\:grid-cols-none {
+      grid-template-columns: none;
+    }
+    .#{$name}\:grid-cols-subgrid {
+      grid-template-columns: subgrid;
+    }
+
+    // grid-rows-*
+    @for $i from 1 through 12 {
+      .#{$name}\:grid-rows-#{$i} {
+        grid-template-rows: repeat($i, minmax(0, 1fr));
+      }
+    }
+    .#{$name}\:grid-rows-none {
+      grid-template-rows: none;
+    }
+    .#{$name}\:grid-rows-subgrid {
+      grid-template-rows: subgrid;
+    }
+
+    // col-span
+    @for $i from 1 through 12 {
+      .#{$name}\:col-span-#{$i} {
+        grid-column: span $i / span $i;
+      }
+    }
+    .#{$name}\:col-span-full {
+      grid-column: 1 / -1;
+    }
+
+    // col-start / col-end
+    @for $i from 1 through $max-lines {
+      .#{$name}\:col-start-#{$i} {
+        grid-column-start: $i;
+      }
+      .#{$name}\:\-col-start-#{$i} {
+        grid-column-start: calc(#{$i} * -1);
+      }
+      .#{$name}\:col-end-#{$i} {
+        grid-column-end: $i;
+      }
+      .#{$name}\:\-col-end-#{$i} {
+        grid-column-end: calc(#{$i} * -1);
+      }
+    }
+    .#{$name}\:col-start-auto {
+      grid-column-start: auto;
+    }
+    .#{$name}\:col-end-auto {
+      grid-column-end: auto;
+    }
+
+    // col shorthand
+    .#{$name}\:col-auto {
+      grid-column: auto;
+    }
+    @for $i from 1 through 12 {
+      .#{$name}\:col-#{$i} {
+        grid-column: $i;
+      }
+      .#{$name}\:\-col-#{$i} {
+        grid-column: calc(#{$i} * -1);
+      }
+    }
+
+    // row-span
+    @for $i from 1 through 12 {
+      .#{$name}\:row-span-#{$i} {
+        grid-row: span $i / span $i;
+      }
+    }
+    .#{$name}\:row-span-full {
+      grid-row: 1 / -1;
+    }
+
+    // row-start / row-end
+    @for $i from 1 through $max-lines {
+      .#{$name}\:row-start-#{$i} {
+        grid-row-start: $i;
+      }
+      .#{$name}\:\-row-start-#{$i} {
+        grid-row-start: calc(#{$i} * -1);
+      }
+      .#{$name}\:row-end-#{$i} {
+        grid-row-end: $i;
+      }
+      .#{$name}\:\-row-end-#{$i} {
+        grid-row-end: calc(#{$i} * -1);
+      }
+    }
+    .#{$name}\:row-start-auto {
+      grid-row-start: auto;
+    }
+    .#{$name}\:row-end-auto {
+      grid-row-end: auto;
+    }
+
+    // row shorthand
+    .#{$name}\:row-auto {
+      grid-row: auto;
+    }
+    @for $i from 1 through 12 {
+      .#{$name}\:row-#{$i} {
+        grid-row: $i;
+      }
+      .#{$name}\:\-row-#{$i} {
+        grid-row: calc(#{$i} * -1);
+      }
+    }
+
+    // grid-flow
+    .#{$name}\:grid-flow-row {
+      grid-auto-flow: row;
+    }
+    .#{$name}\:grid-flow-col {
+      grid-auto-flow: column;
+    }
+    .#{$name}\:grid-flow-dense {
+      grid-auto-flow: dense;
+    }
+    .#{$name}\:grid-flow-row-dense {
+      grid-auto-flow: row dense;
+    }
+    .#{$name}\:grid-flow-col-dense {
+      grid-auto-flow: column dense;
+    }
+
+    // auto-cols
+    .#{$name}\:auto-cols-auto {
+      grid-auto-columns: auto;
+    }
+    .#{$name}\:auto-cols-min {
+      grid-auto-columns: min-content;
+    }
+    .#{$name}\:auto-cols-max {
+      grid-auto-columns: max-content;
+    }
+    .#{$name}\:auto-cols-fr {
+      grid-auto-columns: minmax(0, 1fr);
+    }
+
+    // auto-rows
+    .#{$name}\:auto-rows-auto {
+      grid-auto-rows: auto;
+    }
+    .#{$name}\:auto-rows-min {
+      grid-auto-rows: min-content;
+    }
+    .#{$name}\:auto-rows-max {
+      grid-auto-rows: max-content;
+    }
+    .#{$name}\:auto-rows-fr {
+      grid-auto-rows: minmax(0, 1fr);
+    }
+  }
+}

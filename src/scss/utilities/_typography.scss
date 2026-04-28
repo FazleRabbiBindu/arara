@@ -1,0 +1,18 @@
+// src/scss/utilities/_typography.scss
+$weights: ("light": 300, "normal": 400, "medium": 500, "bold": 700);
+
+@each $name, $value in $weights {
+  .font-#{$name} { font-weight: $value !important; }
+}
+
+.text-center { text-align: center !important; }
+.text-right  { text-align: right !important; }
+.text-left   { text-align: left !important; }
+
+.text-uppercase { text-transform: uppercase !important; }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

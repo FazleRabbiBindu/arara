@@ -1,0 +1,54 @@
+@use '../abstract/variables' as v;
+@use '../abstract/mixins' as m;
+
+// 1. Padding Classes (Mobile-first)
+@each $key, $val in v.$spacers {
+  .p-#{$key} { padding: $val !important; }
+  .pt-#{$key} { padding-top: $val !important; }
+  .pb-#{$key} { padding-bottom: $val !important; }
+  .pl-#{$key} { padding-left: $val !important; }
+  .pr-#{$key} { padding-right: $val !important; }
+  .px-#{$key} { padding-left: $val !important; padding-right: $val !important; }
+  .py-#{$key} { padding-top: $val !important; padding-bottom: $val !important; }
+}
+
+// 2. Margin Classes (Mobile-first)
+@each $key, $val in v.$spacers {
+  .m-#{$key} { margin: $val !important; }
+  .mt-#{$key} { margin-top: $val !important; }
+  .mb-#{$key} { margin-bottom: $val !important; }
+  .ml-#{$key} { margin-left: $val !important; }
+  .mr-#{$key} { margin-right: $val !important; }
+  .mx-#{$key} { margin-left: $val !important; margin-right: $val !important; }
+  .my-#{$key} { margin-top: $val !important; margin-bottom: $val !important; }
+}
+
+// 3. Space Utilities
+@each $key, $val in v.$spacers {
+  .space-x-#{$key} > :not([hidden]) ~ :not([hidden]) { margin-left: $val !important; }
+  .space-y-#{$key} > :not([hidden]) ~ :not([hidden]) { margin-top: $val !important; }
+}
+
+// 4. Background Color Utilities
+@each $color, $value in v.$colors {
+  .bg-#{$color} { background-color: $value !important; }
+}
+
+// 5. Text Color Utilities
+@each $color, $value in v.$colors {
+  .text-#{$color} { color: $value !important; }
+}
+
+// 6. Responsive Spacing Utilities
+@each $name, $width in v.$breakpoints {
+  @include m.break($name) {
+    @each $key, $val in v.$spacers {
+      .#{$name}\:p-#{$key} { padding: $val !important; }
+      .#{$name}\:m-#{$key} { margin: $val !important; }
+      .#{$name}\:px-#{$key} { padding-left: $val !important; padding-right: $val !important; }
+      .#{$name}\:py-#{$key} { padding-top: $val !important; padding-bottom: $val !important; }
+      .#{$name}\:mx-#{$key} { margin-left: $val !important; margin-right: $val !important; }
+      .#{$name}\:my-#{$key} { margin-top: $val !important; margin-bottom: $val !important; }
+    }
+  }
+}

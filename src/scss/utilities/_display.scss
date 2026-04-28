@@ -1,0 +1,11 @@
+@use '../abstract' as abs;
+
+.d-none { display: none !important; }
+.d-block { display: block !important; }
+
+@each $name, $width in abs.$breakpoints {
+  @include abs.break($name) {
+    .d-#{$name}-none { display: none !important; }
+    .d-#{$name}-block { display: block !important; }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "style-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "sass src/scss/main.scss dist/css/style.css --no-source-map",
+    "watch": "sass src/scss/main.scss dist/css/style.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "sass": "^1.99.0"
+  }
+}

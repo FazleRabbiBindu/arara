@@ -1,0 +1,30 @@
+@use 'sass:map';
+@use '../abstract' as abs;
+
+.table {
+  width: 100%;
+  margin-bottom: map.get(abs.$spacers, "4");
+  background-color: transparent;
+  border-collapse: collapse;
+
+  th, td {
+    padding: map.get(abs.$spacers, "3");
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    text-align: left;
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #dee2e6;
+    background-color: rgba(0,0,0,0.02);
+  }
+
+  &-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0,0,0,0.05);
+  }
+
+  &-hover tbody tr:hover {
+    background-color: rgba(0,0,0,0.07);
+  }
+}

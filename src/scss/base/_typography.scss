@@ -1,0 +1,112 @@
+@use 'sass:map';
+@use '../abstract' as abs;
+
+// --- 1. Global Reset & Base ---
+body {
+  margin: 0;
+  font-family: map.get(abs.$font-families, "sans");
+  font-size: map.get(abs.$font-sizes, "base");
+  line-height: map.get(abs.$line-heights, "base");
+  color: map.get(abs.$colors, "slate-900");
+  background-color: map.get(abs.$colors, "slate-50");
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+section {
+  border-radius: 0.5rem;   // 8px rounded corners
+  padding: 1.5rem;         // 24px inner space
+  box-shadow: inset 0 4px 6px -1px rgba(0, 0, 0, 0.1), inset 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+// --- 2. Headings ---
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: map.get(abs.$spacers, "3");
+  font-weight: 700;
+  line-height: map.get(abs.$line-heights, "tight");
+  color: map.get(abs.$colors, "dark");
+  letter-spacing: -0.025em; // Modern "Inter" look
+}
+
+h1 { font-size: map.get(abs.$font-sizes, "4xl"); }
+h2 { font-size: map.get(abs.$font-sizes, "3xl"); }
+h3 { font-size: map.get(abs.$font-sizes, "2xl"); }
+h4 { font-size: map.get(abs.$font-sizes, "xl"); }
+h5 { font-size: map.get(abs.$font-sizes, "lg"); }
+h6 { font-size: map.get(abs.$font-sizes, "base"); }
+
+// Display Headings (For hero sections/dashboard stats)
+.display-1 { font-size: 5rem; font-weight: 800; line-height: 1; }
+.display-2 { font-size: 4rem; font-weight: 800; line-height: 1; }
+
+// --- 3. Inline Elements ---
+p {
+  margin-top: 0;
+  margin-bottom: map.get(abs.$spacers, "4");
+}
+
+small, .text-small {
+  font-size: map.get(abs.$font-sizes, "sm");
+}
+
+strong, b { font-weight: 700; }
+
+// --- 4. Weight Utilities ---
+$weights: ("thin": 100, "light": 300, "normal": 400, "medium": 500, "semibold": 600, "bold": 700, "black": 900);
+@each $name, $value in $weights {
+  .font-#{$name} { font-weight: #{$value} !important; }
+}
+
+// --- 5. Alignment & Transformation ---
+.text-center    { text-align: center !important; }
+.text-right     { text-align: right !important; }
+.text-left      { text-align: left !important; }
+.text-justify   { text-align: justify !important; }
+
+.text-uppercase  { text-transform: uppercase !important; letter-spacing: 0.05em; }
+.text-lowercase  { text-transform: lowercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+.text-italic     { font-style: italic !important; }
+
+// --- 6. Color Helpers ---
+.text-primary   { color: map.get(abs.$colors, "primary") !important; }
+.text-secondary { color: map.get(abs.$colors, "secondary") !important; }
+.text-success   { color: map.get(abs.$colors, "success") !important; }
+.text-danger    { color: map.get(abs.$colors, "danger") !important; }
+.text-white     { color: #fff !important; }
+.text-muted     { color: map.get(abs.$colors, "slate-500") !important; }
+
+// --- 7. Layout & Truncation ---
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Line Clamp (Truncate after 2 or 3 lines)
+@for $i from 1 through 5 {
+  .line-clamp-#{$i} {
+    @include abs.line-clamp($i);
+  }
+}
+
+.line-clamp-none {
+  display: block;
+  -webkit-line-clamp: none;
+  line-clamp: none;
+}
+
+.text-break { word-wrap: break-word !important; word-break: break-word !important; }
+
+// --- 8. Lists ---
+.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+
+.list-inline {
+  padding-left: 0;
+  list-style: none;
+  li { display: inline-block; margin-right: map.get(abs.$spacers, "2"); }
+}

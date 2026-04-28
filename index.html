@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleLib | Official Documentation</title>
+  <link rel="stylesheet" href="dist/css/style.css">
+  <style>
+    section {
+      scroll-margin-top: 90px;
+    }
+  </style>
+</head>
+
+<body class="bg-slate-50">
+
+  <nav class="navbar shadow-sm sticky-top">
+    <a href="#" class="navbar-brand">StyleLib</a>
+    <ul class="navbar-nav">
+      <li><a href="#">GitHub</a></li>
+      <li><a href="#" class="btn btn-primary btn-sm text-white">v0.0.1</a></li>
+    </ul>
+  </nav>
+
+  <div class="container ml-5 mt-0">
+    <div class="grid grid-cols-12 gap-6">
+
+      <div id="sidebar-overlay" class="drawer-overlay"></div>
+
+<aside id="main-sidebar" class="col-span-12 md:col-span-3 border-r sidebar-drawer p-3 overflow-y-auto">
+  <h4 class="mb-4 font-bold text-uppercase text-muted small letter-spacing-1">
+    Documentation
+  </h4>
+  
+  <ul class="nav-vertical">
+    <li class="nav-item">
+      <a href="#typography" class="nav-link active">Typography</a>
+      <ul class="nav-sub">
+        <li><a href="#typography-headings" class="sub-link active">Heading</a></li>
+        <li><a href="#typography-colors" class="sub-link">Color</a></li>
+        <li><a href="#typography-font" class="sub-link">Font</a></li>
+        <li><a href="#typography-display" class="sub-link">Display</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#border" class="nav-link">Border</a>
+      <ul class="nav-sub">
+        <li><a href="#border-width" class="sub-link">Width</a></li>
+        <li><a href="#border-style" class="sub-link">Style</a></li>
+        <li><a href="#border-radius" class="sub-link">Radius</a></li>
+        <li><a href="#border-colors" class="sub-link">Color</a></li>
+      </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#grid" class="nav-link">Grid</a>
+      <ul class="nav-sub">
+        <li><a href="#grid-columns" class="sub-link">Columns</a></li>
+        <li><a href="#grid-rows" class="sub-link">Rows</a></li>
+        <li><a href="#grid-gap" class="sub-link">Gap</a></li>
+        <li><a href="#grid-responsive" class="sub-link">Responsive</a></li>
+      </ul>
+    </li>
+  </ul>
+</aside>
+
+      <main class="col-span-12 md:col-span-9 p-4">
+
+        <!-- Typography -->
+        <section id="typography" class="mb-5">
+          <h1 class="text-primary">Typography</h1>
+          <p class="text-muted">StyleLib typography utilities provide consistent text styling, from headings and font
+            weights to alignment, colors, and truncation.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-primary text-white p-4 rounded-md">Responsive headings</div>
+            <div class="bg-secondary text-white p-4 rounded-md">Font weight & color utilities</div>
+            <div class="bg-slate-100 p-4 rounded-md">Text alignment & truncation</div>
+          </div>
+
+          <h2 class="mt-4" id="typography-headings">Headings</h2>
+          <p>Use semantic headings with predefined sizes and styles.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+            </div>
+          </div>
+
+          <h2 class="mt-4" id="typography-display">Display headings</h2>
+          <p>For large hero text or stats, use display classes.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;h1 class="display-1"&gt;Display 1&lt;/h1&gt;
+&lt;h1 class="display-2"&gt;Display 2&lt;/h1&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <h1 class="display-1">Display 1</h1>
+              <h1 class="display-2">Display 2</h1>
+            </div>
+          </div>
+
+          <h2 class="mt-4" id="typography-font">Font weights</h2>
+          <p>Apply font weights with utility classes.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;p class="font-thin"&gt;Thin text&lt;/p&gt;
+&lt;p class="font-bold"&gt;Bold text&lt;/p&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <p class="font-thin">Thin text (100)</p>
+              <p class="font-light">Light text (300)</p>
+              <p class="font-normal">Normal text (400)</p>
+              <p class="font-medium">Medium text (500)</p>
+              <p class="font-semibold">Semibold text (600)</p>
+              <p class="font-bold">Bold text (700)</p>
+              <p class="font-black">Black text (900)</p>
+            </div>
+          </div>
+
+          <h2 class="mt-4">Text alignment</h2>
+          <p>Control text alignment with these classes.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;p class="text-left"&gt;Left aligned&lt;/p&gt;
+&lt;p class="text-center"&gt;Center aligned&lt;/p&gt;
+&lt;p class="text-right"&gt;Right aligned&lt;/p&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <p class="text-left">Left aligned text</p>
+              <p class="text-center">Center aligned text</p>
+              <p class="text-right">Right aligned text</p>
+            </div>
+          </div>
+
+          <h2 class="mt-4">Text transformation</h2>
+          <p>Transform text case or style.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;p class="text-uppercase"&gt;uppercase&lt;/p&gt;
+&lt;p class="text-capitalize"&gt;capitalize&lt;/p&gt;
+&lt;p class="text-italic"&gt;italic&lt;/p&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <p class="text-uppercase">uppercase text</p>
+              <p class="text-lowercase">LOWERCASE TEXT</p>
+              <p class="text-capitalize">capitalize text</p>
+              <p class="text-italic">Italic text</p>
+            </div>
+          </div>
+
+          <h2 class="mt-4" id="typography-colors">Text colors</h2>
+          <p>Use semantic color classes for text.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;p class="text-primary"&gt;Primary text&lt;/p&gt;
+&lt;p class="text-muted"&gt;Muted text&lt;/p&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <p class="text-primary">Primary text</p>
+              <p class="text-secondary">Secondary text</p>
+              <p class="text-success">Success text</p>
+              <p class="text-danger">Danger text</p>
+              <p class="text-white bg-slate-900 p-2 rounded">White text</p>
+              <p class="text-muted">Muted text</p>
+            </div>
+          </div>
+
+          <h2 class="mt-4">Text truncation</h2>
+          <p>Truncate long text with ellipsis.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;p class="text-truncate"&gt;Very long text that will be truncated...&lt;/p&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <p class="text-truncate" style="width: 200px;">Very long text that will be truncated with ellipsis when it
+                overflows the container width.</p>
+            </div>
+          </div>
+
+          <h2 class="mt-4">Line clamping</h2>
+          <p>Limit text to a specific number of lines.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;p class="line-clamp-2"&gt;Long paragraph that will be clamped to 2 lines...&lt;/p&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <p class="line-clamp-2">This is a long paragraph that demonstrates line clamping. It will be limited to
+                exactly two lines of text, with any overflow hidden and an ellipsis added at the end. This is useful for
+                card summaries or preview text where you want to maintain consistent heights.</p>
+            </div>
+          </div>
+
+          <h2 class="mt-4">Lists</h2>
+          <p>Remove default list styling.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;ul class="list-unstyled"&gt;
+  &lt;li&gt;Item 1&lt;/li&gt;
+  &lt;li&gt;Item 2&lt;/li&gt;
+&lt;/ul&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <ul class="list-unstyled">
+                <li>Unstyled list item 1</li>
+                <li>Unstyled list item 2</li>
+                <li>Unstyled list item 3</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Border -->
+        <section id="border" class="mb-5">
+          <h1 class="text-primary">Border</h1>
+          <p class="text-muted">Border utilities let you control width, direction, color, style, and radius.</p>
+
+          <h2 class="mt-4">Basic borders</h2>
+          <p>Start with the core border utilities.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border p-4 rounded-md"&gt;Default border&lt;/div&gt;
+&lt;div class="border-2 p-4 rounded-md"&gt;Thick border&lt;/div&gt;
+&lt;div class="border-0 p-4 rounded-md"&gt;No border&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="border p-4 rounded-md bg-white">.border</div>
+            <div class="border-2 p-4 rounded-md bg-white">.border-2</div>
+            <div class="border-0 p-4 rounded-md bg-white">.border-0</div>
+          </div>
+
+          <h2 class="mt-4">Directional borders</h2>
+          <p>Apply borders to one side only.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border-t p-4"&gt;Top border&lt;/div&gt;
+&lt;div class="border-b-2 p-4"&gt;Bottom thick border&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="border-t p-4 rounded-md bg-white">.border-t</div>
+            <div class="border-b-2 p-4 rounded-md bg-white">.border-b-2</div>
+          </div>
+
+          <h2 class="mt-4">Axis borders</h2>
+          <p>Use <code>.border-x</code> for left/right and <code>.border-y</code> for top/bottom borders.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border-x p-4"&gt;Horizontal borders&lt;/div&gt;
+&lt;div class="border-y p-4"&gt;Vertical borders&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="border-x p-4 rounded-md bg-white">.border-x</div>
+            <div class="border-y p-4 rounded-md bg-white">.border-y</div>
+          </div>
+
+          <h2 class="mt-4" id="border-colors">Border colors</h2>
+          <p>Use semantic color names to tint any border.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border border-primary p-4"&gt;Primary border&lt;/div&gt;
+&lt;div class="border border-danger p-4"&gt;Danger border&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="border border-primary p-4 rounded-md bg-white">.border-primary</div>
+            <div class="border border-success p-4 rounded-md bg-white">.border-success</div>
+            <div class="border border-danger p-4 rounded-md bg-white">.border-danger</div>
+          </div>
+
+          <h2 class="mt-4" id="border-style">Border styles</h2>
+          <p>Switch the line style while keeping width and color.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border border-solid p-4"&gt;Solid&lt;/div&gt;
+&lt;div class="border border-dashed p-4"&gt;Dashed&lt;/div&gt;
+&lt;div class="border border-dotted p-4"&gt;Dotted&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="border border-solid p-4 rounded-md bg-white">.border-solid</div>
+            <div class="border border-dashed p-4 rounded-md bg-white">.border-dashed</div>
+            <div class="border border-dotted p-4 rounded-md bg-white">.border-dotted</div>
+          </div>
+
+          <h2 class="mt-4" id="border-width">Border width sizes</h2>
+          <p>Choose a width utility to control the stroke thickness.</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.border</code> | 1px border</li>
+            <li><code>.border-2</code> | 2px border</li>
+            <li><code>.border-4</code> | 4px border</li>
+            <li><code>.border-8</code> | 8px border</li>
+            <li><code>.border-0</code> | remove the border entirely</li>
+          </ul>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+            <div class="border p-4 rounded-md bg-white">.border</div>
+            <div class="border-2 p-4 rounded-md bg-white">.border-2</div>
+            <div class="border-4 p-4 rounded-md bg-white">.border-4</div>
+            <div class="border-8 p-4 rounded-md bg-white">.border-8</div>
+          </div>
+
+          <h2 class="mt-4">Border sides</h2>
+          <p>Use side utilities to add a border only to one edge.</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.border-t</code> | top border</li>
+            <li><code>.border-r</code> | right border</li>
+            <li><code>.border-b</code> | bottom border</li>
+            <li><code>.border-l</code> | left border</li>
+          </ul>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border-t p-4"&gt;Top border&lt;/div&gt;
+&lt;div class="border-l-4 p-4"&gt;Left thick border&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+            <div class="border-t p-4 rounded-md bg-white">.border-t</div>
+            <div class="border-l-4 p-4 rounded-md bg-white">.border-l-4</div>
+          </div>
+
+          <h2 class="mt-4" id="border-radius">Border radius sizes</h2>
+          <p>Choose a radius utility to control how rounded the corners are.</p>
+          <ul class="pl-4 mb-3">
+            <li><code class="badge badge-primary">.rounded-none</code> square corners</li>
+            <li><code>.rounded-sm</code> | small radius</li>
+            <li><code>.rounded</code> | default radius</li>
+            <li><code>.rounded-md</code> | medium radius</li>
+            <li><code>.rounded-lg</code> | large radius</li>
+            <li><code>.rounded-xl</code> | extra large radius</li>
+            <li><code>.rounded-2xl</code> / <code>.rounded-3xl</code> | extra-curved corners</li>
+            <li><code>.rounded-full</code> | pill / full circle corners</li>
+          </ul>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+            <div class="border rounded-none p-4 bg-white">.rounded-none</div>
+            <div class="border rounded-sm p-4 bg-white">.rounded-sm</div>
+            <div class="border rounded p-4 bg-white">.rounded</div>
+            <div class="border rounded-lg p-4 bg-white">.rounded-lg</div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
+            <div class="border rounded-xl p-4 bg-white">.rounded-xl</div>
+            <div class="border rounded-2xl p-4 bg-white">.rounded-2xl</div>
+            <div class="border rounded-3xl p-4 bg-white">.rounded-3xl</div>
+            <div class="border rounded-full p-4 bg-white">.rounded-full</div>
+          </div>
+
+          <h2 class="mt-4">Border radius corners</h2>
+          <p>Apply radius to specific corners or edges only.</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.rounded-tl</code>, <code>.rounded-tr</code>, <code>.rounded-br</code>, <code>.rounded-bl</code> |
+              single corners</li>
+            <li><code>.rounded-t</code>, <code>.rounded-r</code>, <code>.rounded-b</code>, <code>.rounded-l</code> |
+              top, right, bottom, left edges</li>
+            <li>Each corner/edge also supports size suffixes like <code>.rounded-tl-lg</code> or
+              <code>.rounded-b-sm</code></li>
+          </ul>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border rounded-tl-lg rounded-br-lg p-4"&gt;Diagonal radius&lt;/div&gt;
+&lt;div class="border rounded-t p-4"&gt;Top corners only&lt;/div&gt;</pre>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+            <div class="border rounded-tl-lg rounded-br-lg p-4 bg-white">.rounded-tl-lg .rounded-br-lg</div>
+            <div class="border rounded-t-xl p-4 bg-white">.rounded-t-xl</div>
+            <div class="rounded-b p-4 bg-white">.rounded-b</div>
+          </div>
+
+          <h2 class="mt-4">Responsive border rules</h2>
+          <p>Prefix any border utility with breakpoints such as <code>.md:border</code> or
+            <code>.lg:border-primary</code>.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="border p-4 md:border-2 lg:border-primary"&gt;Responsive border&lt;/div&gt;</pre>
+          </div>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <div class="border p-4 rounded-md md:border-2 lg:border-primary bg-white">Responsive border demo</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Grid Section -->
+        <section id="grid" class="mb-5">
+          <h1 class="text-primary">Grid</h1>
+          <p class="text-muted">StyleLib grid utilities let you build responsive layouts with explicit column, row,
+            span, and flow control.</p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="bg-primary text-white p-4 rounded-md">Grid utilities for structure</div>
+            <div class="bg-secondary text-white p-4 rounded-md">Responsive grid classes</div>
+            <div class="bg-slate-100 p-4 rounded-md">Preview-ready examples</div>
+          </div>
+
+          <h2 class="mt-4" id="grid-gap">Basic setup</h2>
+          <p>Start with <code>.grid</code> or <code>.inline-grid</code>, then choose column and row templates.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="grid grid-cols-3 gap-4"&gt;
+  &lt;div class="col-span-2"&gt;Wide item&lt;/div&gt;
+  &lt;div&gt;Box&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <h2 class="mt-4" id="grid-columns">Column templates</h2>
+          <p>Use:</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.grid-cols-1</code> through <code>.grid-cols-12</code></li>
+            <li><code>.grid-cols-none</code></li>
+            <li><code>.grid-cols-subgrid</code></li>
+          </ul>
+
+          <h2 class="mt-4" id="grid-rows">Row templates</h2>
+          <p>Use row templates the same way:</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.grid-rows-1</code> through <code>.grid-rows-12</code></li>
+            <li><code>.grid-rows-none</code></li>
+            <li><code>.grid-rows-subgrid</code></li>
+          </ul>
+
+          <h2 class="mt-4">Span utilities</h2>
+          <p>Span items across multiple tracks:</p>
+          <div class="grid grid-cols-4 gap-3 mb-4">
+            <div class="col-span-2 bg-slate-100 p-3 rounded-md">.col-span-2</div>
+            <div class="bg-slate-100 p-3 rounded-md">1</div>
+            <div class="row-span-2 bg-slate-100 p-3 rounded-md">.row-span-2</div>
+            <div class="bg-slate-100 p-3 rounded-md">2</div>
+          </div>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="col-span-2"&gt;...&lt;/div&gt;
+&lt;div class="row-span-2"&gt;...&lt;/div&gt;</pre>
+          </div>
+
+          <h2 class="mt-4">Line placement</h2>
+          <p>Position items with start/end classes:</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.col-start-1</code> through <code>.col-start-13</code></li>
+            <li><code>.col-end-1</code> through <code>.col-end-13</code></li>
+            <li><code>.row-start-1</code> through <code>.row-start-13</code></li>
+            <li><code>.row-end-1</code> through <code>.row-end-13</code></li>
+          </ul>
+          <p>Negative lines are available with <code>.-col-start-#</code>, <code>.-col-end-#</code>,
+            <code>.-row-start-#</code>, and <code>.-row-end-#</code>.</p>
+
+          <h2 class="mt-4">Shorthand placement</h2>
+          <p>Use direct track placement classes:</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.col-auto</code>, <code>.row-auto</code></li>
+            <li><code>.col-1</code> through <code>.col-12</code></li>
+            <li><code>.row-1</code> through <code>.row-12</code></li>
+          </ul>
+
+          <h2 class="mt-4">Auto flow</h2>
+          <p>Control placement direction and packing:</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.grid-flow-row</code></li>
+            <li><code>.grid-flow-col</code></li>
+            <li><code>.grid-flow-dense</code></li>
+            <li><code>.grid-flow-row-dense</code></li>
+            <li><code>.grid-flow-col-dense</code></li>
+          </ul>
+
+          <h2 class="mt-4">Auto tracks</h2>
+          <p>Use these classes for implicit grid sizing:</p>
+          <ul class="pl-4 mb-3">
+            <li><code>.auto-cols-auto</code>, <code>.auto-cols-min</code>, <code>.auto-cols-max</code>,
+              <code>.auto-cols-fr</code></li>
+            <li><code>.auto-rows-auto</code>, <code>.auto-rows-min</code>, <code>.auto-rows-max</code>,
+              <code>.auto-rows-fr</code></li>
+          </ul>
+
+          <h2 class="mt-4" id="grid-responsive">Responsive utilities</h2>
+          <p>Prefix any grid utility with breakpoint names like <code>.md:grid-cols-6</code> or
+            <code>.lg:col-span-4</code>.</p>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-4"&gt;
+  &lt;div class="col-span-1 md:col-span-2"&gt;Responsive item&lt;/div&gt;
+  &lt;div&gt;Item&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <h2 class="mt-4">Preview example</h2>
+          <p>Use this sample grid layout to visualize how dummy content behaves across columns and spans.</p>
+          <div class="card border mb-4">
+            <div class="card-body">
+              <div class="grid grid-cols-4 gap-4 mb-4">
+                <div class="col-span-2 bg-primary text-white p-4 rounded-md">Campaign summary</div>
+                <div class="bg-slate-100 p-4 rounded-md">Active users</div>
+                <div class="bg-slate-100 p-4 rounded-md">Conversion rate</div>
+                <div class="col-span-4 bg-slate-50 border rounded-md p-4">
+                  <h3 class="mb-2">Project notes</h3>
+                  <p class="mb-0">This dashboard uses <code>.col-span-2</code> and <code>.col-span-4</code> together in
+                    a 4-column grid to surface key metrics and notes.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="code-block mb-4">
+            <pre>&lt;div class="grid grid-cols-4 gap-4"&gt;
+  &lt;div class="col-span-2 bg-primary text-white p-4 rounded-md"&gt;Campaign summary&lt;/div&gt;
+  &lt;div class="bg-slate-100 p-4 rounded-md"&gt;Active users&lt;/div&gt;
+  &lt;div class="bg-slate-100 p-4 rounded-md"&gt;Conversion rate&lt;/div&gt;
+  &lt;div class="col-span-4 bg-slate-50 border rounded-md p-4"&gt;Project notes&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <h2 class="mt-4">Grid rules</h2>
+          <div class="mb-4">
+            <div class="mb-5">
+              <p class="mb-2"><strong>1. Display</strong> | Use <code>.grid</code> or <code>.inline-grid</code> to
+                create a grid container.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid gap-3 bg-white p-3 rounded-md border">
+                  <div class="bg-primary text-white p-2 rounded">Item 1</div>
+                  <div class="bg-primary text-white p-2 rounded">Item 2</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="grid"&gt;...&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>2. Column templates</strong> | Use <code>.grid-cols-1</code> to
+                <code>.grid-cols-12</code> to set the number of grid columns.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-cols-3 gap-3 bg-white p-3 rounded-md border">
+                  <div class="bg-slate-200 p-3 rounded">Col 1</div>
+                  <div class="bg-slate-200 p-3 rounded">Col 2</div>
+                  <div class="bg-slate-200 p-3 rounded">Col 3</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="grid grid-cols-3 gap-3"&gt;...&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>3. Row templates</strong> | Use <code>.grid-rows-1</code> to
+                <code>.grid-rows-12</code> to define explicit grid rows.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-rows-3 gap-3 bg-white p-3 rounded-md border" style="grid-auto-flow: column;">
+                  <div class="bg-slate-200 p-3 rounded">Row 1</div>
+                  <div class="bg-slate-200 p-3 rounded">Row 2</div>
+                  <div class="bg-slate-200 p-3 rounded">Row 3</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="grid grid-rows-3 gap-3"&gt;...&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>4. Column spans</strong> | Use <code>.col-span-N</code> to span items across
+                multiple columns.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-cols-4 gap-3 bg-white p-3 rounded-md border">
+                  <div class="col-span-2 bg-primary text-white p-3 rounded">Span 2</div>
+                  <div class="bg-slate-200 p-3 rounded">Box</div>
+                  <div class="bg-slate-200 p-3 rounded">Box</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="col-span-2"&gt;Wide item&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>5. Row spans</strong> | Use <code>.row-span-N</code> to make an item taller across
+                multiple rows.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-cols-4 gap-3 bg-white p-3 rounded-md border">
+                  <div class="row-span-2 bg-primary text-white p-3 rounded">Row span 2</div>
+                  <div class="bg-slate-200 p-3 rounded">Box</div>
+                  <div class="bg-slate-200 p-3 rounded">Box</div>
+                  <div class="bg-slate-200 p-3 rounded">Box</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="row-span-2"&gt;Tall item&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>6. Line placement</strong> | Use start/end classes to position items on specific
+                grid lines.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-cols-4 gap-3 bg-white p-3 rounded-md border">
+                  <div class="col-start-2 col-end-4 bg-primary text-white p-3 rounded">Col 2–3</div>
+                  <div class="bg-slate-200 p-3 rounded">Box</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="col-start-2 col-end-4"&gt;Placed item&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>7. Shorthand placement</strong> | Use <code>.col-N</code> or <code>.row-N</code>
+                to place an item directly on a track.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-cols-6 gap-3 bg-white p-3 rounded-md border">
+                  <div class="col-3 bg-primary text-white p-3 rounded">Col 3</div>
+                  <div class="col-2 bg-slate-200 p-3 rounded">Col 2</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="col-3"&gt;Direct column&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>8. Auto flow</strong> | Use auto-flow utilities to change direction and packing
+                behavior.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-flow-col gap-3 bg-white p-3 rounded-md border">
+                  <div class="bg-slate-200 p-3 rounded">Flow 1</div>
+                  <div class="bg-slate-200 p-3 rounded">Flow 2</div>
+                  <div class="bg-slate-200 p-3 rounded">Flow 3</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="grid grid-flow-col gap-3"&gt;...&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>9. Auto tracks</strong> | Use <code>.auto-cols-*</code> and
+                <code>.auto-rows-*</code> to control implicit track sizing.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid auto-cols-fr auto-rows-min gap-3 bg-white p-3 rounded-md border">
+                  <div class="bg-slate-200 p-3 rounded">Auto col</div>
+                  <div class="bg-slate-200 p-3 rounded">Auto col</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="auto-cols-fr auto-rows-min"&gt;...&lt;/div&gt;</pre>
+              </div>
+            </div>
+
+            <div class="mb-5">
+              <p class="mb-2"><strong>10. Responsive variants</strong> | Prefix any rule with breakpoints like
+                <code>.md:</code> or <code>.lg:</code>.</p>
+              <div class="bg-slate-100 p-3 rounded-md mb-3">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 bg-white p-3 rounded-md border">
+                  <div class="bg-slate-200 p-3 rounded">Responsive 1</div>
+                  <div class="bg-slate-200 p-3 rounded">Responsive 2</div>
+                  <div class="bg-slate-200 p-3 rounded">Responsive 3</div>
+                </div>
+              </div>
+              <div class="code-block">
+                <pre>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-3"&gt;...&lt;/div&gt;</pre>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- <footer class="bg-slate-900 text-white p-5 mt-5 text-center">
+    <p>© 2026 StyleLib Framework | Designed by Md. Fazle Rabbi Bindu</p>
+  </footer> -->
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+@use 'sass:map';
+@use 'sass:color';
+@use '../abstract' as abs;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: map.get(abs.$spacers, "2") map.get(abs.$spacers, "4");
+  border-radius: map.get(abs.$radii, "md");
+  transition: map.get(abs.$transitions, "fast");
+  font-size: map.get(abs.$font-sizes, "base");
+
+  &:hover {
+    opacity: 0.95;
+    text-decoration: none;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-block {
+  width: 100%;
+}
+
+.btn-sm {
+  padding: map.get(abs.$spacers, "1") map.get(abs.$spacers, "2");
+  font-size: map.get(abs.$font-sizes, "sm");
+}
+
+.btn-lg {
+  padding: map.get(abs.$spacers, "3") map.get(abs.$spacers, "5");
+  font-size: map.get(abs.$font-sizes, "lg");
+}
+
+// Generate Color Variants
+@each $name, $color in abs.$colors {
+  .btn-#{$name} {
+    background-color: $color;
+    border-color: $color;
+    color: abs.color-contrast($color);
+
+    &:hover {
+      background-color: color.adjust($color, $lightness: -10%);
+    }
+  }
+
+  .btn-outline-#{$name} {
+    background-color: transparent;
+    border-color: $color;
+    color: $color;
+
+    &:hover {
+      background-color: $color;
+      color: abs.color-contrast($color);
+    }
+  }
+}
