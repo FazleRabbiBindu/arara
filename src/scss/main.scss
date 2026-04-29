@@ -1,28 +1,20 @@
-// Configuration & Helpers
-@use 'abstract';
+// ==========================================================================
+// MAIN ENTRY POINT
+// ==========================================================================
 
-// Base styles
-@use 'base/reset';
-@use 'base/typography';
+// 1. ABSTRACTS (The Brain)
+// This pulls in Variables, Functions, Mixins, and Animations
+@use 'abstracts/index' as abs;
 
-// Components
-@use 'components/alerts';
-@use 'components/badges';
-@use 'components/buttons';
-@use 'components/card';
-@use 'components/code';
-@use 'components/forms';
-@use 'components/navs';
-@use 'components/table';
+// 2. BASE (The Foundation)
+// Clears browser defaults and sets global typography rules
+@use 'base/index' as base;
 
-// 4. Utilities
-@use 'utilities/borders';
-@use 'utilities/container';
-@use 'utilities/display';
-@use 'utilities/flex';
-@use 'utilities/grid';
-@use 'utilities/layout';
-@use 'utilities/radius';
-@use 'utilities/shadows';
-@use 'utilities/spacing';
-@use 'utilities/transitions';
+// 3. COMPONENTS (The UI Elements - Optional)
+// Styles for specific objects like buttons or cards
+@use 'components/index' as comp;
+
+// 4. UTILITIES (The Tools)
+// This is the largest part of your framework. 
+// We load it LAST so these classes always have the highest specificity.
+@use 'utilities/index' as utils;

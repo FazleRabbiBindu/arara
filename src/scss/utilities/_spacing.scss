@@ -1,54 +1,105 @@
-@use '../abstract/variables' as v;
-@use '../abstract/mixins' as m;
+// ==========================================================================
+// UTILITIES: SPACING (Padding & Margin)
+// ==========================================================================
 
-// 1. Padding Classes (Mobile-first)
-@each $key, $val in v.$spacers {
-  .p-#{$key} { padding: $val !important; }
-  .pt-#{$key} { padding-top: $val !important; }
-  .pb-#{$key} { padding-bottom: $val !important; }
-  .pl-#{$key} { padding-left: $val !important; }
-  .pr-#{$key} { padding-right: $val !important; }
-  .px-#{$key} { padding-left: $val !important; padding-right: $val !important; }
-  .py-#{$key} { padding-top: $val !important; padding-bottom: $val !important; }
+@use '../abstracts' as *;
+
+// 1. PADDING GENERATOR
+// Creates: .p-{size}, .pt-{size}, .pb-{size}, .pl-{size}, .pr-{size}, .px-{size}, .py-{size}
+@each $key, $value in $spacers {
+  $class-key: str-replace($key, ".", "_");
+  // All sides
+  .p-#{$class-key} { padding: $value !important; }
+  
+  // Single sides
+  .pt-#{$class-key} { padding-top: $value !important; }
+  .pb-#{$class-key} { padding-bottom: $value !important; }
+  .pl-#{$class-key} { padding-left: $value !important; }
+  .pr-#{$class-key} { padding-right: $value !important; }
+
+  // Directional (Axis)
+  .px-#{$class-key} { 
+    padding-left: $value !important; 
+    padding-right: $value !important; 
+  }
+  .py-#{$class-key} { 
+    padding-top: $value !important; 
+    padding-bottom: $value !important; 
+  }
 }
 
-// 2. Margin Classes (Mobile-first)
-@each $key, $val in v.$spacers {
-  .m-#{$key} { margin: $val !important; }
-  .mt-#{$key} { margin-top: $val !important; }
-  .mb-#{$key} { margin-bottom: $val !important; }
-  .ml-#{$key} { margin-left: $val !important; }
-  .mr-#{$key} { margin-right: $val !important; }
-  .mx-#{$key} { margin-left: $val !important; margin-right: $val !important; }
-  .my-#{$key} { margin-top: $val !important; margin-bottom: $val !important; }
+// 2. MARGIN GENERATOR
+// Creates: .m-{size}, .mt-{size}, .mb-{size}, .ml-{size}, .mr-{size}, .mx-{size}, .my-{size}
+@each $key, $value in $spacers {
+  $class-key: str-replace($key, ".", "_");
+  // All sides
+  .m-#{$class-key} { margin: $value !important; }
+  
+  // Single sides
+  .mt-#{$class-key} { margin-top: $value !important; }
+  .mb-#{$class-key} { margin-bottom: $value !important; }
+  .ml-#{$class-key} { margin-left: $value !important; }
+  .mr-#{$class-key} { margin-right: $value !important; }
+
+  // Directional (Axis)
+  .mx-#{$class-key} { 
+    margin-left: $value !important; 
+    margin-right: $value !important; 
+  }
+  .my-#{$class-key} { 
+    margin-top: $value !important; 
+    margin-bottom: $value !important; 
+  }
 }
 
-// 3. Space Utilities
-@each $key, $val in v.$spacers {
-  .space-x-#{$key} > :not([hidden]) ~ :not([hidden]) { margin-left: $val !important; }
-  .space-y-#{$key} > :not([hidden]) ~ :not([hidden]) { margin-top: $val !important; }
+// 3. SPECIAL MARGINS (Auto)
+.m-auto  { margin: auto !important; }
+.mt-auto { margin-top: auto !important; }
+.mb-auto { margin-bottom: auto !important; }
+.ml-auto { margin-left: auto !important; }
+.mr-auto { margin-right: auto !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.my-auto { margin-top: auto !important; margin-bottom: auto !important; }
+
+
+// 4. GAP GENERATOR (For Flex and Grid)
+// Creates: .gap-{size}, .gap-x-{size}, .gap-y-{size}
+@each $key, $value in $spacers {
+  $class-key: str-replace($key, ".", "_");
+  .gap-#{$class-key}   { gap: $value !important; }
+  .gap-x-#{$class-key} { column-gap: $value !important; }
+  .gap-y-#{$class-key} { row-gap: $value !important; }
 }
 
-// 4. Background Color Utilities
-@each $color, $value in v.$colors {
-  .bg-#{$color} { background-color: $value !important; }
+// 5. NEGATIVE MARGINS
+// Creates: .-m-{size}, .-mt-{size}, etc.
+@each $key, $value in $spacers {
+  $class-key: str-replace($key, ".", "_");
+  @if $value != 0 {
+    .-m-#{$class-key}  { margin: -#{$value} !important; }
+    .-mt-#{$class-key} { margin-top: -#{$value} !important; }
+    .-mb-#{$class-key} { margin-bottom: -#{$value} !important; }
+    .-ml-#{$class-key} { margin-left: -#{$value} !important; }
+    .-mr-#{$class-key} { margin-right: -#{$value} !important; }
+    .-mx-#{$class-key} { margin-left: -#{$value} !important; margin-right: -#{$value} !important; }
+    .-my-#{$class-key} { margin-top: -#{$value} !important; margin-bottom: -#{$value} !important; }
+  }
 }
 
-// 5. Text Color Utilities
-@each $color, $value in v.$colors {
-  .text-#{$color} { color: $value !important; }
-}
+// 6. SPACE-BETWEEN GENERATOR
+// Usage: .space-x-4 (adds margin-left to all siblings)
+@each $key, $value in $spacers {
+  $class-key: str-replace($key, ".", "_");
+  .space-x-#{$class-key} > * + * { 
+    margin-left: $value !important; 
+  }
+  .space-y-#{$class-key} > * + * { 
+    margin-top: $value !important; 
+  }
 
-// 6. Responsive Spacing Utilities
-@each $name, $width in v.$breakpoints {
-  @include m.break($name) {
-    @each $key, $val in v.$spacers {
-      .#{$name}\:p-#{$key} { padding: $val !important; }
-      .#{$name}\:m-#{$key} { margin: $val !important; }
-      .#{$name}\:px-#{$key} { padding-left: $val !important; padding-right: $val !important; }
-      .#{$name}\:py-#{$key} { padding-top: $val !important; padding-bottom: $val !important; }
-      .#{$name}\:mx-#{$key} { margin-left: $val !important; margin-right: $val !important; }
-      .#{$name}\:my-#{$key} { margin-top: $val !important; margin-bottom: $val !important; }
-    }
+  // Reverse logic for RTL support or reversed flex-cols
+  .space-x-reverse-#{$class-key} > * + * { 
+    margin-right: $value !important; 
+    margin-left: 0 !important; 
   }
 }

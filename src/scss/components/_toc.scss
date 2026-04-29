@@ -1,0 +1,53 @@
+@use '../abstracts' as abs;
+
+// --- TABLE OF CONTENTS (Right Sidebar) ---
+.toc {
+  display: none; // Hidden by default (Mobile/Tablet)
+
+  @include abs.respond-to(lg) {
+    display: block;
+    position: sticky;
+    top: 64px; // Navbar height
+    height: calc(100vh - 64px);
+    width: 240px;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    border-left: 1px solid #f1f5f9;
+  }
+}
+
+.toc-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  margin-bottom: 1rem;
+}
+
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.toc-link {
+  font-size: 0.875rem;
+  color: #64748b;
+  text-decoration: none;
+  transition: color 0.2s;
+  display: block;
+  padding: 0.25rem 0;
+
+  &:hover {
+    color: #0f172a;
+  }
+
+  &.is-active {
+    color: #4f46e5;
+    font-weight: 600;
+  }
+}

@@ -1,8 +1,0 @@
-@use 'sass:map';
-@use '../abstract' as abs;
-
-@each $key, $val in abs.$shadows {
-  .shadow-#{$key} {
-    box-shadow: $val !important;
-  }
-}
