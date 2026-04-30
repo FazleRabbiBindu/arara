@@ -1,375 +1,164 @@
-# ArarA - CSS Utility Library
+---
 
-Trying to build a css uitlity library maybe some component style and components.
+## Modern Web Standards and Performance
 
-## Table of Contents
+ArarA is engineered to leverage the latest features of the CSS specification (2024-2026), ensuring future-proof layouts and optimal rendering performance.
 
-- [Features](#features)
-- [Quick Start](#quick-start)
-- [Installation](#installation)
-- [File Structure](#file-structure)
-- [Core Utilities](#core-utilities)
-- [Documentation](#documentation)
-- [Build & Development](#build--development)
-- [Contributing](#contributing)
-- [License](#license)
+### 1. Native CSS Custom Properties (Variables)
+Unlike legacy frameworks that bake values into the CSS, ArarA utilizes **Native CSS Variables** for core design tokens.
+- **Dynamic Theming**: Change your entire brand color or spacing scale in real-time by updating a single `--ar-primary` or `--ar-base-padding` variable.
+- **Runtime Flexibility**: Support for dark mode and user-defined themes without recompiling CSS.
+
+### 2. Fluid Typography with `clamp()`
+ArarA implements a **Mathematical Typographic Scale** that uses the `clamp()` function for truly fluid text.
+- **Viewport Sensitivity**: Font sizes automatically scale between defined minimum and maximum values based on the viewport width, eliminating the need for excessive `@media` overrides.
+- **Container Awareness**: Optimized for modern component-based architectures where text needs to adapt to its parent container.
+
+### 3. Advanced Layout Logic
+- **CSS Grid Subgrid**: Built with subgrid compatibility in mind, allowing nested components to inherit parent grid structures for perfect alignment.
+- **Logical Properties**: Uses `margin-inline`, `padding-block`, and `inset` logical properties where applicable to support RTL (Right-to-Left) languages natively.
+- **Sticky Stacking Contexts**: Leverages modern `position: sticky` and `z-index` isolation for complex documentation layouts.
+
+### 4. Performance Optimization
+- **Critical Path CSS**: Modular Sass partials allow for the generation of "Critical CSS" to improve Largest Contentful Paint (LCP) metrics.
+- **Zero-JavaScript Layouts**: All core navigation, grid, and responsive behaviors are handled by the browser's CSS engine, reducing main-thread execution time.
 
 ---
 
-## Features
+ArarA is optimized for a wide range of web development scenarios:
 
-- **Utility-First Design** – Build UIs quickly with pre-defined utility classes
-- **Responsive Support** – Built-in breakpoints for mobile, tablet, and desktop
-- **SCSS-Based** – Modular, maintainable SCSS source with `@use` imports
-- **Comprehensive Utilities** – Typography, spacing, borders, colors, grid, and more
-- **Semantic Naming** – Intuitive class names for common styling patterns
-- **Customizable** – Easy to extend and configure abstract variables
-- **Zero Dependencies** – Pure CSS, no JavaScript required
+- **Rapid Prototyping**: Build high-fidelity mockups directly in the browser using the intuitive utility class naming convention.
+- **High-Performance Landing Pages**: Generate minimal CSS bundles that prioritize page load speed and SEO without sacrificing visual richness.
+- **Documentation Sites**: Leverage the built-in documentation components (TOC, navigation, sidebar logic) to create technical sites quickly.
+- **Scalable Design Systems**: Use the Sass source files as a foundation for building a custom, internal design system for large-scale enterprise applications.
 
 ---
 
-## Quick Start
+## Detailed Feature Reference
 
-### Option 1: CDN (Coming Soon)
-```html
-<link rel="stylesheet" href="https://cdn.arara.dev/style.css">
-```
+ArarA provides a granular suite of utility modules designed for maximum flexibility.
 
-### Option 2: Local Installation
+### 1. Grid and Layout Engine
+The grid system is a full 12-column implementation with responsive modifiers.
+- **Column Spanning**: Classes range from `.col-span-1` to `.col-span-12`. These can be prefixed with breakpoints (e.g., `.md:col-span-6`).
+- **Column Start/End**: Precise control with `.col-start-{n}` and `.col-end-{n}` (1-13) for asymmetric layouts.
+- **Grid Templates**: `.grid-cols-{n}` (1-12) allows for rapid creation of uniform grids.
+- **Gap Management**: Independent horizontal and vertical gaps via `.gap-x-{n}` and `.gap-y-{n}`, using the 16-step spacing scale.
+- **Display Utilities**: Includes `.grid`, `.flex`, `.inline-grid`, `.hidden`, and `.block` with full responsive support.
 
-1. **Clone or download the repository**
-   ```bash
-   git clone https://github.com/FazleRabbiBindu/arara.git
-   cd arara
-   ```
+### 2. Typography and Textual Control
+A robust system for managing readability and brand voice.
+- **Weight Scale**: 
+    - `font-thin`: 100
+    - `font-light`: 300
+    - `font-normal`: 400
+    - `font-medium`: 500
+    - `font-semibold`: 600
+    - `font-bold`: 700
+    - `font-extrabold`: 800
+- **Size System**: A 12-step typographic scale from `text-xs` (0.75rem) to `text-9xl` (8rem).
+- **Text Alignment**: Responsive alignment via `.text-left`, `.text-center`, `.text-right`, and `.text-justify`.
+- **Text Transformation**: Utilities for `.uppercase`, `.lowercase`, `.capitalize`, and `.normal-case`.
+- **Readability**: Utilities for line-height (`leading-tight`, `leading-relaxed`) and letter-spacing (`tracking-tight`, `tracking-widest`).
 
-2. **Link the compiled stylesheet**
-   ```html
-   <link rel="stylesheet" href="path/to/dist/css/style.css">
-   ```
+### 3. Spacing (Margin and Padding)
+The spacing system is derived from a geometric 16-step scale based on 4px (`0.25rem`) increments.
+- **Directions**: `t` (top), `r` (right), `b` (bottom), `l` (left), `x` (horizontal), `y` (vertical), and `a` (all).
+- **Scale Steps**: `0, 1, 2, 4, 6, 8, 12, 16, 20, 24, 32, 40, 48, 56, 64`.
+- **Negative Margins**: Available for all margin utilities (e.g., `.-mt-4`).
+- **Responsive Sizing**: Every spacing utility can be prefixed with a breakpoint (e.g., `lg:p-16`).
 
-3. **Start using utility classes**
-   ```html
-   <div class="border border-primary p-4 rounded-lg">
-     <h1 class="text-primary font-bold">Welcome to StyleLib</h1>
-     <p class="text-muted">Build responsive layouts with utility classes</p>
-   </div>
-   ```
+### 4. Borders and Visual Aesthetics
+- **Border Width**: Scale includes `.border` (1px), `.border-0`, `.border-2`, `.border-4`, and `.border-8`.
+- **Border Direction**: Apply borders to specific sides using `.border-t`, `.border-b`, etc.
+- **Corner Rounding**: Tokens include `.rounded-none`, `.rounded-sm`, `.rounded`, `.rounded-lg`, `.rounded-xl`, `.rounded-2xl`, `.rounded-3xl`, and `.rounded-full`.
+- **Shadow System**: Integrated elevation system using `.shadow-sm`, `.shadow-md`, `.shadow-lg`, and `.shadow-xl`.
 
 ---
 
-## Installation
+## Architectural Deep Dive
+
+ArarA's source code is organized into a hierarchical layer system to ensure maintainability and separation of concerns.
+
+### 1. The Abstract Layer (src/scss/abstract/)
+This is the functional core of the framework. It contains no output CSS and is designed to be imported into other modules without increasing bundle size.
+- **Variable System**: Implemented using Sass maps to allow for iterative utility generation. This includes `$colors`, `$spacers`, `$font-sizes`, and `$breakpoints`.
+- **String Manipulation**: Custom functions like `str-replace` are utilized to sanitize class names, ensuring that decimal values in the spacing scale are converted to safe CSS selectors (e.g., `0.5` becomes `0_5`).
+- **Responsive Mixins**: A centralized `respond-to` mixin handles media query generation, ensuring that all responsive utilities follow a consistent mobile-first breakpoint logic.
+
+### 2. Utility Generation Mechanism
+The hallmark of ArarA is its automated utility generation engine located in `src/scss/utilities/_responsive.scss`.
+- **The Loop Engine**: ArarA iterates through the `$breakpoints` map to generate prefixed variants (`sm:`, `md:`, etc.) for every core utility.
+- **Namespace Isolation**: By wrapping utility generation in responsive mixins, we ensure that media queries are grouped together, improving browser parsing efficiency and reducing CSS file size.
+
+### 3. Design Token Specification
+ArarA's design system is rooted in a mathematically consistent token set:
+- **Color Palette**: A curated set of primary, secondary, and slate hues with high-contrast ratios for accessibility.
+- **Spacing Scale**: A 16-step scale ranging from `0` to `64` units, where each unit equals `0.25rem`.
+- **Breakpoints**: 
+    - `sm`: 640px
+    - `md`: 768px
+    - `lg`: 1024px
+    - `xl`: 1280px
+
+### 4. The Component Layer (src/scss/components/)
+Contains specialized styles for the documentation site. These demonstrate how to build complex components by composing the framework's internal design tokens via `@use`.
+
+---
+
+## Installation and Build
 
 ### Requirements
 - Node.js (v14 or higher)
-- npm or yarn package manager
+- npm (Standard package manager)
 
-### Steps
-
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-2. **Build the CSS**
-   ```bash
-   npm run build
-   ```
-
-   The compiled stylesheet will be generated at `dist/css/style.css`.
-
-3. **Link in your HTML**
-   ```html
-   <link rel="stylesheet" href="dist/css/style.css">
-   ```
-
-### Development Mode
-
-For development with file watching:
+### Local Setup
 ```bash
-npm run watch
+git clone https://github.com/FazleRabbiBindu/arara.git
+cd arara
+npm install
 ```
 
-This will recompile the SCSS automatically when you make changes.
+### Build Commands
+| Command | Description |
+| :--- | :--- |
+| `npm run build` | Compiles the production-ready CSS to `dist/css/style.css`. |
+| `npm run watch` | Automatically recompiles on every file save (Development). |
 
 ---
 
-## File Structure
+## Documentation Implementation (v0.1.0)
 
-```
-arara/
-├── src/scss/
-│   ├── main.scss              # Main entry point
-│   ├── abstract/
-│   │   ├── _index.scss        # Abstract index
-│   │   ├── _variables.scss    # Colors, spacing, breakpoints
-│   │   ├── _functions.scss    # SCSS helper functions
-│   │   └── _mixins.scss       # Responsive & utility mixins
-│   ├── base/
-│   │   ├── _reset.scss        # CSS reset
-│   │   └── _typography.scss   # Base typography styles
-│   ├── components/
-│   │   ├── _buttons.scss      # Button component styles
-│   │   └── _card.scss         # Card component styles
-│   └── utilities/
-│       ├── _spacing.scss      # Margin & padding utilities
-│       ├── _borders.scss      # Border utilities (width, color, radius, style)
-│       ├── _typography.scss   # Font, size, color, alignment utilities
-│       └── ...
-├── dist/css/
-│   └── style.css              # Compiled stylesheet
-├── index.html                 # Official documentation site
-├── package.json
-└── README.md
-```
+ArarA v0.1.0 includes a sophisticated multi-page documentation architecture built entirely using the framework's own utilities and components.
 
----
-
-## Core Utilities
-
-### Typography
-
-Utilities for controlling text styling, alignment, and transformation.
-
-**Classes:**
-- `.font-thin`, `.font-light`, `.font-normal`, `.font-bold`, `.font-black` – Font weights
-- `.text-primary`, `.text-secondary`, `.text-danger`, `.text-success` – Text colors
-- `.text-left`, `.text-center`, `.text-right` – Text alignment
-- `.text-uppercase`, `.text-lowercase`, `.text-capitalize` – Case transformation
-- `.text-truncate` – Ellipsis truncation
-- `.line-clamp-1`, `.line-clamp-2`, etc. – Line clamping
-
-**Example:**
-```html
-<p class="font-bold text-primary text-center">Centered bold primary text</p>
-```
-
-### Border
-
-Complete border control including width, direction, color, style, and radius.
-
-**Width Classes:**
-- `.border` – 1px border (default)
-- `.border-2`, `.border-4`, `.border-8` – Various widths
-- `.border-0` – Remove border
-
-**Direction Classes:**
-- `.border-t`, `.border-r`, `.border-b`, `.border-l` – Single side
-- `.border-x`, `.border-y` – Horizontal/vertical
-
-**Color & Style:**
-- `.border-primary`, `.border-success`, `.border-danger` – Semantic colors
-- `.border-solid`, `.border-dashed`, `.border-dotted` – Line styles
-
-**Radius Classes:**
-- `.rounded-none`, `.rounded-sm`, `.rounded`, `.rounded-lg`, `.rounded-full` – All corners
-- `.rounded-tl`, `.rounded-tr`, `.rounded-br`, `.rounded-bl` – Individual corners
-- `.rounded-t`, `.rounded-r`, `.rounded-b`, `.rounded-l` – Edge sides
-- Size suffixes: `.rounded-lg-tl`, `.rounded-lg-b` – Sized variants
-
-**Example:**
-```html
-<div class="border-2 border-primary rounded-lg p-4">
-  Styled box with primary border
-</div>
-```
-
-### Grid
-
-CSS Grid utilities for building responsive layouts.
-
-**Grid Setup:**
-- `.grid` – Create a grid container
-- `.inline-grid` – Inline grid container
-
-**Column Control:**
-- `.grid-cols-1` through `.grid-cols-12` – Column templates
-- `.col-span-1` through `.col-span-12` – Column spanning
-- `.col-start-1` through `.col-start-13` – Column line placement
-
-**Row Control:**
-- `.grid-rows-1` through `.grid-rows-12` – Row templates
-- `.row-span-1` through `.row-span-12` – Row spanning
-
-**Gap & Flow:**
-- `.gap-1`, `.gap-2`, `.gap-4`, etc. – Grid gap spacing
-- `.grid-flow-row`, `.grid-flow-col`, `.grid-flow-dense` – Auto flow
-
-**Example:**
-```html
-<div class="grid grid-cols-3 gap-4">
-  <div class="col-span-2">Wide item</div>
-  <div>Regular item</div>
-</div>
-```
-
-### Spacing
-
-Utilities for margin and padding.
-
-**Margin Classes:**
-- `.m-1`, `.m-2`, `.m-4`, etc. – All sides
-- `.mt-4`, `.mr-4`, `.mb-4`, `.ml-4` – Individual sides
-- `.mx-4`, `.my-4` – Horizontal/vertical
-
-**Padding Classes:**
-- `.p-1`, `.p-2`, `.p-4`, etc. – All sides
-- `.pt-4`, `.pr-4`, `.pb-4`, `.pl-4` – Individual sides
-- `.px-4`, `.py-4` – Horizontal/vertical
-
----
-
-## Documentation
-
-### Official Documentation Site
-
-Open `index.html` in your browser to explore interactive examples for:
-- Typography utilities
-- Border utilities and variants
-- Grid layout patterns
-- Responsive design techniques
-
-### Viewing Documentation
-
-1. **In your browser:**
-   ```bash
-   npm run build
-   open index.html
-   ```
-
-2. **Or serve locally:**
-   ```bash
-   npx http-server
-   # Visit http://localhost:8080
-   ```
-
-### Key Documentation Sections
-
-1. **Typography** – Headings, font weights, text colors, alignment, and text transformation
-2. **Border** – Width, direction, colors, styles, radius, and corner variants
-3. **Grid** – Column/row templates, spanning, placement, and responsive behavior
-
----
-
-## Build & Development
-
-### Available Commands
-
-```bash
-# Build the stylesheet once
-npm run build
-
-# Watch for changes and rebuild automatically
-npm run watch
-
-# View in browser (requires http-server)
-npm start
-```
-
-### Customizing Variables
-
-Edit `src/scss/abstract/_variables.scss` to customize:
-- **Colors** – Primary, secondary, danger, success, etc.
-- **Spacing Scale** – Margin and padding values
-- **Border Radii** – Corner rounding sizes
-- **Breakpoints** – Responsive breakpoint widths
-
-### Adding New Utilities
-
-1. Create or edit a file in `src/scss/utilities/`
-2. Import it in `src/scss/main.scss`
-3. Run `npm run build`
-4. Add tests and documentation in `index.html`
-
----
-
-## Contributing
-
-Contributions are welcome! To contribute:
-
-1. **Fork the repository**
-   ```bash
-   git clone https://github.com/FazleRabbiBindu/arara.git
-   ```
-
-2. **Create a feature branch**
-   ```bash
-   git checkout -b feature/add-new-utility
-   ```
-
-3. **Make your changes**
-   - Update SCSS files in `src/scss/`
-   - Add examples to `index.html` documentation
-   - Test in the browser
-
-4. **Build and test**
-   ```bash
-   npm run build
-   ```
-
-5. **Commit and push**
-   ```bash
-   git commit -m "Add new utility for X"
-   git push origin feature/add-new-utility
-   ```
-
-6. **Create a Pull Request**
-
----
-
-## Guidelines
-
-### Naming Conventions
-
-- Use lowercase and hyphens for class names
-- Use semantic names (`.text-primary` instead of `.color-blue`)
-- Use sides shorthand: `.mt-4` for margin-top, `.px-2` for padding horizontal
-- Responsive prefixes: `.md:border-2`, `.lg:grid-cols-3`
-
-### Code Style
-
-- Use 2-space indentation
-- Follow SCSS best practices with `@use` and nested selectors
-- Keep utilities focused and single-purpose
-- Avoid `!important` unless necessary
-
----
-
-## Version
-
-**Current Version:** 0.0.1 (Alpha)
-
----
-
-## License
-
-StyleLib is licensed under the MIT License. See the LICENSE file for details.
-
----
-
-## Credits
-
-Created and maintained by **Md. Fazle Rabbi Bindu**
-
----
-
-## Support
-
-- **Email:** fazlerabbibindu@gmail.com
-- **Bug Reports:** [GitHub Issues]
-- **Discussions:** [GitHub Discussions]
+- **Tree-Structured TOC**: Implemented with a custom SCSS module (`_toc.scss`) and a lightweight JavaScript handler for hierarchical highlighting.
+- **Independent Scroll Containers**: Uses `position: sticky` and `overflow-y: auto` to provide persistent navigation sidebars.
+- **Heading Pulse Animation**: A custom CSS animation triggered by URL hash changes to provide visual feedback during navigation.
 
 ---
 
 ## Roadmap
 
-- [ ] Complete v0.1.0 with all core utilities
-- [ ] Add flexbox utilities
-- [ ] Add shadow and opacity utilities
-- [ ] Create npm package for distribution
-- [ ] Add TypeScript definitions
-- [ ] Build interactive component library
+- v0.1.0 Beta Release (Completed)
+- Advanced 12-column Grid System (Completed)
+- Flexbox Utility Suite (v0.2.0 Development)
+- Shadow & Glassmorphism Preset Library
+- Official npm Package Distribution
 
 ---
 
-**Happy styling with ArarA! **
+## License
+
+ArarA is licensed under the MIT License.
+
+---
+
+## Support and Maintenance
+
+- Bug Reports: GitHub Issues
+- Email: fazlerabbibindu@gmail.com
+- Maintainer: Md. Fazle Rabbi Bindu
+
+---
+
+<p align="center"><b>Built for the Modern Web</b></p>

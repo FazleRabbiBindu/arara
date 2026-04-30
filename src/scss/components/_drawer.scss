@@ -41,11 +41,13 @@
     position: sticky;
     top: 64px; // Navbar height
     height: calc(100vh - 64px);
-    width: 256px; // 64rem
+    width: 280px;
+    flex-shrink: 0;
     transform: none;
     transition: none;
     box-shadow: none;
     z-index: 10;
+    border-right: 1px solid #f1f5f9;
   }
 }
 

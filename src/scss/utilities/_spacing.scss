@@ -103,3 +103,14 @@
     margin-left: 0 !important; 
   }
 }
+
+// 7. SCROLL MARGIN GENERATOR
+// Useful for sticky headers to prevent content from being hidden
+@each $key, $value in $spacers {
+  $class-key: str-replace($key, ".", "_");
+  .scroll-m-#{$class-key}  { scroll-margin: $value !important; }
+  .scroll-mt-#{$class-key} { scroll-margin-top: $value !important; }
+  .scroll-mb-#{$class-key} { scroll-margin-bottom: $value !important; }
+  .scroll-ml-#{$class-key} { scroll-margin-left: $value !important; }
+  .scroll-mr-#{$class-key} { scroll-margin-right: $value !important; }
+}

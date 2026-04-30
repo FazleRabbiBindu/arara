@@ -17,9 +17,7 @@
   $bp-class: str-replace($bp-class, "3xl", "xxxl");
   @include respond-to($bp-name) {
     // We use a prefixing strategy here
-    // Note: This requires your utility files to be wrapped in a mixin 
-    // OR we use the @at-root / selector-nesting trick below:
-
+    
     @each $key, $value in $spacers {
       $class-key: str-replace($key, ".", "_");
       .#{$bp-class}\:p-#{$class-key}  { padding: $value !important; }
@@ -81,6 +79,20 @@
 
     @each $key, $value in $shadows {
       .#{$bp-class}\:shadow-#{$key} { box-shadow: $value !important; }
+    }
+
+    // Responsive Transforms
+    @each $key, $value in $transition-scales {
+      .#{$bp-class}\:scale-#{$key} { --tw-scale-x: #{$value}; --tw-scale-y: #{$value}; @include transform-gpu; }
+    }
+    @each $key, $value in $transition-rotate {
+      .#{$bp-class}\:rotate-#{$key} { --tw-rotate: #{$value}; @include transform-gpu; }
+    }
+    @each $key, $value in $transition-translate {
+      .#{$bp-class}\:translate-x-#{$key} { --tw-translate-x: #{$value}; @include transform-gpu; }
+      .#{$bp-class}\:translate-y-#{$key} { --tw-translate-y: #{$value}; @include transform-gpu; }
+      .#{$bp-class}\:-translate-x-#{$key} { --tw-translate-x: -#{$value}; @include transform-gpu; }
+      .#{$bp-class}\:-translate-y-#{$key} { --tw-translate-y: -#{$value}; @include transform-gpu; }
     }
   }
 }

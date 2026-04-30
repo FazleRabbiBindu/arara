@@ -82,13 +82,35 @@
   }
 }
 
-// 10. TRANSFORMS (Scale & Rotate)
+// 10. TRANSFORMS (Scale, Rotate, & Translate)
+// We use a CSS variable approach to allow stacking multiple transforms
+.transform-gpu {
+  @include transform-gpu;
+}
+
 @each $key, $value in $transition-scales {
-  .scale-#{$key} { transform: scale(#{$value}) !important; }
+  .scale-#{$key} { --tw-scale-x: #{$value}; --tw-scale-y: #{$value}; @include transform-gpu; }
+  .hover\:scale-#{$key}:hover { --tw-scale-x: #{$value}; --tw-scale-y: #{$value}; @include transform-gpu; }
 }
 
 @each $key, $value in $transition-rotate {
-  .rotate-#{$key} { transform: rotate(#{$value}) !important; }
+  .rotate-#{$key} { --tw-rotate: #{$value}; @include transform-gpu; }
+  .hover\:rotate-#{$key}:hover { --tw-rotate: #{$value}; @include transform-gpu; }
+}
+
+@each $key, $value in $transition-translate {
+  .translate-x-#{$key} { --tw-translate-x: #{$value}; @include transform-gpu; }
+  .translate-y-#{$key} { --tw-translate-y: #{$value}; @include transform-gpu; }
+  
+  // Negative variants
+  .-translate-x-#{$key} { --tw-translate-x: -#{$value}; @include transform-gpu; }
+  .-translate-y-#{$key} { --tw-translate-y: -#{$value}; @include transform-gpu; }
+
+  // Hover variants
+  .hover\:translate-x-#{$key}:hover { --tw-translate-x: #{$value}; @include transform-gpu; }
+  .hover\:translate-y-#{$key}:hover { --tw-translate-y: #{$value}; @include transform-gpu; }
+  .hover\:-translate-x-#{$key}:hover { --tw-translate-x: -#{$value}; @include transform-gpu; }
+  .hover\:-translate-y-#{$key}:hover { --tw-translate-y: -#{$value}; @include transform-gpu; }
 }
 
 // Transform Origins
@@ -120,3 +142,14 @@
 
 .pointer-events-none { pointer-events: none !important; }
 .pointer-events-auto { pointer-events: auto !important; }
+
+// --- HIGHLIGHT ANIMATION ---
+@keyframes highlight-pulse {
+  0% { background-color: rgba(79, 70, 229, 0.15); }
+  100% { background-color: transparent; }
+}
+
+.heading-highlight {
+  animation: highlight-pulse 2s ease-out forwards;
+  border-radius: 0.5rem;
+}
