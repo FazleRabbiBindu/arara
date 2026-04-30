@@ -12,6 +12,17 @@
   @include abs.respond-to(lg) {
     grid-template-columns: 1fr 1fr;
   }
+
+  .code-block {
+    border: none;
+    border-radius: 0;
+    height: 100%;
+    
+    .code-body {
+      flex-grow: 1;
+      max-height: none;
+    }
+  }
 }
 
 .showcase-preview {
