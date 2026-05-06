@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ArarA color system — semantic aliases, full palette, text, background and border utilities.">
-  <title>Colors &amp; Theming | ArarA v0.1.0</title>
+  <meta name="description" content="Complete documentation for ArarA color utilities SCSS – text, background, border, hover, opacity, and special utilities.">
+  <title>Color Utilities | ArarA v0.1.0</title>
   <link rel="stylesheet" href="../../dist/css/style.css">
 </head>
 <body class="bg-slate-50 font-sans antialiased text-slate-900">
@@ -37,181 +37,272 @@
     </aside>
 
     <main class="grow p-6 md:p-12 lg:p-16 bg-white overflow-hidden">
-      <div id="colors" class="mb-24 scroll-mt-24 max-w-4xl">
+      <div id="color-utilities" class="mb-24 scroll-mt-24 max-w-4xl">
 
-        <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-6">Colors &amp; Theming</h1>
+        <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight mb-6">Color Utilities SCSS</h1>
         <p class="text-xl text-slate-600 leading-relaxed mb-16">
-          ArarA ships with a comprehensive, curated color system. Every color generates <code class="font-mono text-indigo-600">text-</code>, <code class="font-mono text-indigo-600">bg-</code>, <code class="font-mono text-indigo-600">border-</code>, and hover variants — giving you thousands of utility classes from a single, consistent palette.
+          A complete, atomic CSS utility generator for colors. For every key in your <code class="font-mono text-indigo-600">$colors</code> map, the system automatically creates
+          <strong>text, background, border, hover, and opacity variants</strong> — with zero redundancy.
         </p>
 
-        <!-- Semantic Colors -->
-        <div id="semantic" class="mb-16 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Semantic Aliases</h2>
-          <p class="text-slate-600 mb-8 text-sm">Use these semantic names to express intent rather than specific hues. They map to the corresponding color in the palette and can be overridden in your Sass configuration.</p>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-            <div class="rounded-xl overflow-hidden border border-slate-100">
-              <div class="h-16 bg-primary"></div>
-              <div class="p-3"><p class="font-semibold text-slate-800 text-sm">primary</p><p class="text-slate-500 text-xs font-mono">#3b82f6</p></div>
-            </div>
-            <div class="rounded-xl overflow-hidden border border-slate-100">
-              <div class="h-16 bg-danger"></div>
-              <div class="p-3"><p class="font-semibold text-slate-800 text-sm">danger</p><p class="text-slate-500 text-xs font-mono">#ef4444</p></div>
-            </div>
-            <div class="rounded-xl overflow-hidden border border-slate-100">
-              <div class="h-16 bg-success"></div>
-              <div class="p-3"><p class="font-semibold text-slate-800 text-sm">success</p><p class="text-slate-500 text-xs font-mono">#22c55e</p></div>
-            </div>
-            <div class="rounded-xl overflow-hidden border border-slate-100">
-              <div class="h-16 bg-warning"></div>
-              <div class="p-3"><p class="font-semibold text-slate-800 text-sm">warning</p><p class="text-slate-500 text-xs font-mono">#eab308</p></div>
-            </div>
-          </div>
-          <div class="code-block mb-8">
+        <!-- How It Works -->
+        <div id="how-it-works" class="mb-16 scroll-mt-24">
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">How It Works</h2>
+          <p class="text-slate-600 mb-6">The SCSS loops through a <code class="font-mono text-indigo-600">$colors</code> map and generates every utility class dynamically. No manual CSS writing – just configure your palette once.</p>
+          <div class="code-block mb-6">
             <div class="code-header">
               <div class="code-dots"><span></span><span></span><span></span></div>
-              <div class="code-label">HTML</div>
+              <div class="code-label">scss</div>
             </div>
             <div class="code-body">
-              <pre><code>&lt;p class="text-primary"&gt;Primary text&lt;/p&gt;
-&lt;div class="bg-danger text-white p-4"&gt;Danger alert&lt;/div&gt;
-&lt;span class="bg-success/20 text-success px-2 py-1 rounded"&gt;Active&lt;/span&gt;</code></pre>
+              <pre><code>$colors: (
+  'primary':   #3b82f6,
+  'secondary': #64748b,
+  'danger':    #ef4444,
+  'success':   #22c55e,
+  'warning':   #eab308,
+  'info':      #0ea5e9,
+  'dark':      #0f172a,
+  'light':     #f8fafc
+);</code></pre>
             </div>
           </div>
+          <p class="text-slate-600 mb-4">Each key becomes a class suffix – e.g., <code class="font-mono text-indigo-600">.text-primary</code>, <code class="font-mono text-indigo-600">.bg-danger</code>.<br>
+          The code relies on a <code class="font-mono text-indigo-600">str-replace</code> function to handle slash‑based opacity classes (like <code>.bg-primary/20</code>).</p>
         </div>
 
-        <!-- Indigo Palette -->
-        <div id="palette-indigo" class="mb-16 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Indigo</h2>
-          <p class="text-slate-600 mb-6 text-sm">The primary brand color. Used for calls-to-action, highlights, and interactive elements.</p>
-          <div class="grid grid-cols-5 md:grid-cols-10 gap-2 mb-6">
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-50"></div><p class="text-center text-xs text-slate-500 mt-1">50</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-100"></div><p class="text-center text-xs text-slate-500 mt-1">100</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-200"></div><p class="text-center text-xs text-slate-500 mt-1">200</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-300"></div><p class="text-center text-xs text-slate-500 mt-1">300</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-400"></div><p class="text-center text-xs text-slate-500 mt-1">400</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-500"></div><p class="text-center text-xs text-slate-500 mt-1">500</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-600"></div><p class="text-center text-xs text-slate-500 mt-1">600</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-700"></div><p class="text-center text-xs text-slate-500 mt-1">700</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-800"></div><p class="text-center text-xs text-slate-500 mt-1">800</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-indigo-900"></div><p class="text-center text-xs text-slate-500 mt-1">900</p></div>
-          </div>
-        </div>
+        <!-- Generated Class Categories -->
+        <div id="generated-classes" class="mb-16 scroll-mt-24">
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">Generated Class Categories</h2>
+          <p class="text-slate-600 mb-8">For <strong>every</strong> color in <code class="font-mono text-indigo-600">$colors</code>, the following utilities are automatically available.</p>
 
-        <!-- Slate Palette -->
-        <div id="palette-slate" class="mb-16 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Slate</h2>
-          <p class="text-slate-600 mb-6 text-sm">Cool gray tones used for text, backgrounds, borders, and UI surfaces.</p>
-          <div class="grid grid-cols-5 md:grid-cols-10 gap-2 mb-6">
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-50 border border-slate-100"></div><p class="text-center text-xs text-slate-500 mt-1">50</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-100"></div><p class="text-center text-xs text-slate-500 mt-1">100</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-200"></div><p class="text-center text-xs text-slate-500 mt-1">200</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-300"></div><p class="text-center text-xs text-slate-500 mt-1">300</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-400"></div><p class="text-center text-xs text-slate-500 mt-1">400</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-500"></div><p class="text-center text-xs text-slate-500 mt-1">500</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-600"></div><p class="text-center text-xs text-slate-500 mt-1">600</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-700"></div><p class="text-center text-xs text-slate-500 mt-1">700</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-800"></div><p class="text-center text-xs text-slate-500 mt-1">800</p></div>
-            <div class="rounded-lg overflow-hidden"><div class="h-10 bg-slate-900"></div><p class="text-center text-xs text-slate-500 mt-1">900</p></div>
-          </div>
-        </div>
-
-        <!-- More palettes grid -->
-        <div id="all-palettes" class="mb-16 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">All Color Families</h2>
-          <p class="text-slate-600 mb-8 text-sm">ArarA ships 13 color families. Every shade from each family is available as a utility class.</p>
-          <div class="space-y-3">
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">red</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-red-50"></div><div class="flex-1 h-8 rounded bg-red-200"></div><div class="flex-1 h-8 rounded bg-red-400"></div><div class="flex-1 h-8 rounded bg-red-500"></div><div class="flex-1 h-8 rounded bg-red-700"></div><div class="flex-1 h-8 rounded bg-red-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">orange</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-orange-50"></div><div class="flex-1 h-8 rounded bg-orange-200"></div><div class="flex-1 h-8 rounded bg-orange-400"></div><div class="flex-1 h-8 rounded bg-orange-500"></div><div class="flex-1 h-8 rounded bg-orange-700"></div><div class="flex-1 h-8 rounded bg-orange-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">yellow</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-yellow-50"></div><div class="flex-1 h-8 rounded bg-yellow-200"></div><div class="flex-1 h-8 rounded bg-yellow-400"></div><div class="flex-1 h-8 rounded bg-yellow-500"></div><div class="flex-1 h-8 rounded bg-yellow-700"></div><div class="flex-1 h-8 rounded bg-yellow-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">green</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-green-50"></div><div class="flex-1 h-8 rounded bg-green-200"></div><div class="flex-1 h-8 rounded bg-green-400"></div><div class="flex-1 h-8 rounded bg-green-500"></div><div class="flex-1 h-8 rounded bg-green-700"></div><div class="flex-1 h-8 rounded bg-green-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">teal</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-teal-50"></div><div class="flex-1 h-8 rounded bg-teal-200"></div><div class="flex-1 h-8 rounded bg-teal-400"></div><div class="flex-1 h-8 rounded bg-teal-500"></div><div class="flex-1 h-8 rounded bg-teal-700"></div><div class="flex-1 h-8 rounded bg-teal-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">cyan</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-cyan-50"></div><div class="flex-1 h-8 rounded bg-cyan-200"></div><div class="flex-1 h-8 rounded bg-cyan-400"></div><div class="flex-1 h-8 rounded bg-cyan-500"></div><div class="flex-1 h-8 rounded bg-cyan-700"></div><div class="flex-1 h-8 rounded bg-cyan-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">blue</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-blue-50"></div><div class="flex-1 h-8 rounded bg-blue-200"></div><div class="flex-1 h-8 rounded bg-blue-400"></div><div class="flex-1 h-8 rounded bg-blue-500"></div><div class="flex-1 h-8 rounded bg-blue-700"></div><div class="flex-1 h-8 rounded bg-blue-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">indigo</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-indigo-50"></div><div class="flex-1 h-8 rounded bg-indigo-200"></div><div class="flex-1 h-8 rounded bg-indigo-400"></div><div class="flex-1 h-8 rounded bg-indigo-500"></div><div class="flex-1 h-8 rounded bg-indigo-700"></div><div class="flex-1 h-8 rounded bg-indigo-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">purple</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-purple-50"></div><div class="flex-1 h-8 rounded bg-purple-200"></div><div class="flex-1 h-8 rounded bg-purple-400"></div><div class="flex-1 h-8 rounded bg-purple-500"></div><div class="flex-1 h-8 rounded bg-purple-700"></div><div class="flex-1 h-8 rounded bg-purple-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">pink</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-pink-50"></div><div class="flex-1 h-8 rounded bg-pink-200"></div><div class="flex-1 h-8 rounded bg-pink-400"></div><div class="flex-1 h-8 rounded bg-pink-500"></div><div class="flex-1 h-8 rounded bg-pink-700"></div><div class="flex-1 h-8 rounded bg-pink-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">rose</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-rose-50"></div><div class="flex-1 h-8 rounded bg-rose-200"></div><div class="flex-1 h-8 rounded bg-rose-400"></div><div class="flex-1 h-8 rounded bg-rose-500"></div><div class="flex-1 h-8 rounded bg-rose-700"></div><div class="flex-1 h-8 rounded bg-rose-900"></div></div></div>
-            <div class="flex items-center gap-2"><span class="text-xs text-slate-500 w-16">amber</span><div class="flex flex-1 gap-1"><div class="flex-1 h-8 rounded bg-amber-50"></div><div class="flex-1 h-8 rounded bg-amber-200"></div><div class="flex-1 h-8 rounded bg-amber-400"></div><div class="flex-1 h-8 rounded bg-amber-500"></div><div class="flex-1 h-8 rounded bg-amber-700"></div><div class="flex-1 h-8 rounded bg-amber-900"></div></div></div>
-          </div>
-        </div>
-
-        <!-- Text Colors -->
-        <div id="text-colors" class="mb-20 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Text Color</h2>
-          <p class="text-slate-600 mb-8 text-sm">Use <code class="font-mono text-indigo-600">text-{color}-{shade}</code> to set text color.</p>
-          
-          <div class="showcase">
-            <div class="showcase-preview">
-              <div class="space-y-3 w-full max-w-xs">
-                <p class="text-indigo-600 font-bold text-lg">Indigo 600 - Primary Focus</p>
-                <p class="text-slate-900 font-semibold">Slate 900 - Strong Heading</p>
-                <p class="text-slate-600">Slate 600 - Standard body text for legibility.</p>
-                <p class="text-success font-medium">Success Green - Confirmed state.</p>
-              </div>
+          <!-- 1. Base Text -->
+          <div class="mb-10">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Text Colors</h3>
+            <p class="text-slate-500 text-sm mb-3">Pattern: <code class="font-mono text-indigo-600">.text-{name}</code> → <code class="font-mono text-indigo-600">color: {color} !important</code></p>
+            <div class="flex flex-wrap gap-4 p-4 bg-slate-50 rounded-xl mb-4">
+              <span class="text-primary">primary text</span>
+              <span class="text-secondary">secondary text</span>
+              <span class="text-danger">danger text</span>
+              <span class="text-success">success text</span>
+              <span class="text-warning">warning text</span>
+              <span class="text-info">info text</span>
+              <span class="text-dark">dark text</span>
+              <span class="text-white bg-slate-800 px-2">white text</span>
             </div>
             <div class="code-block">
               <div class="code-header">
                 <div class="code-dots"><span></span><span></span><span></span></div>
-                <div class="code-label">HTML</div>
+                <div class="code-label">html</div>
               </div>
-              <div class="code-body">
-                <pre><code>&lt;p class="text-indigo-600 font-bold"&gt;…&lt;/p&gt;
-&lt;p class="text-slate-900 font-semibold"&gt;…&lt;/p&gt;
-&lt;p class="text-success font-medium"&gt;…&lt;/p&gt;</code></pre>
+              <div class="code-body"><pre><code>&lt;p class="text-primary"&gt;Primary text&lt;/p&gt;
+&lt;p class="text-danger"&gt;Error message&lt;/p&gt;
+&lt;span class="text-success"&gt;✓ Success&lt;/span&gt;</code></pre></div>
+            </div>
+          </div>
+
+          <!-- 2. Base Background -->
+          <div class="mb-10">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Background Colors</h3>
+            <p class="text-slate-500 text-sm mb-3">Pattern: <code class="font-mono text-indigo-600">.bg-{name}</code> → <code class="font-mono text-indigo-600">background-color: {color} !important</code></p>
+            <div class="flex flex-wrap gap-4 p-4 bg-slate-50 rounded-xl mb-4">
+              <div class="bg-primary text-white px-4 py-2 rounded">.bg-primary</div>
+              <div class="bg-danger text-white px-4 py-2 rounded">.bg-danger</div>
+              <div class="bg-success text-white px-4 py-2 rounded">.bg-success</div>
+              <div class="bg-warning text-slate-900 px-4 py-2 rounded">.bg-warning</div>
+              <div class="bg-dark text-white px-4 py-2 rounded">.bg-dark</div>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">html</div>
+              </div>
+              <div class="code-body"><pre><code>&lt;div class="bg-primary text-white p-4"&gt;Primary panel&lt;/div&gt;
+&lt;button class="bg-success"&gt;Success button&lt;/button&gt;</code></pre></div>
+            </div>
+          </div>
+
+          <!-- 3. Border Colors -->
+          <div class="mb-10">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Border Colors</h3>
+            <p class="text-slate-500 text-sm mb-3">Pattern: <code class="font-mono text-indigo-600">.border-{name}</code> → <code class="font-mono text-indigo-600">border-color: {color} !important</code> (requires a border-width/style from another utility)</p>
+            <div class="flex flex-wrap gap-6 p-4 bg-slate-50 rounded-xl mb-4">
+              <div class="border border-primary rounded px-4 py-2">border-primary</div>
+              <div class="border border-danger rounded px-4 py-2">border-danger</div>
+              <div class="border-2 border-success rounded px-4 py-2">border-success</div>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">html</div>
+              </div>
+              <div class="code-body"><pre><code>&lt;div class="border border-primary"&gt;...&lt;/div&gt;
+&lt;input class="border-2 border-danger"&gt;</code></pre></div>
+            </div>
+          </div>
+
+          <!-- 4. Hover Variants -->
+          <div class="mb-10">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Hover State Utilities</h3>
+            <p class="text-slate-500 text-sm mb-3">Patterns: <code class="font-mono text-indigo-600">.hover\:text-{name}</code>, <code class="font-mono text-indigo-600">.hover\:bg-{name}</code>, <code class="font-mono text-indigo-600">.hover\:border-{name}</code> – applied only on <code>:hover</code>.</p>
+            <div class="flex flex-wrap gap-4 p-4 bg-slate-50 rounded-xl mb-4">
+              <button class="px-4 py-2 bg-slate-200 hover:bg-primary hover:text-white rounded transition">Hover bg-primary</button>
+              <button class="px-4 py-2 text-slate-600 hover:text-danger rounded transition">Hover text-danger</button>
+              <div class="border border-2 hover:border-2 border-transparent hover:border-success rounded px-4 py-2 transition">Hover border-success</div>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">html</div>
+              </div>
+              <div class="code-body"><pre><code>
+&lt;div class="flex flex-wrap gap-4 p-4 bg-slate-50 rounded-xl mb-4"&gt;
+  &lt;button class="px-4 py-2 bg-slate-200 hover:bg-primary hover:text-white rounded transition">Hover bg-primary&lt;/button&gt;
+  &lt;button class="px-4 py-2 text-slate-600 hover:text-danger rounded transition">Hover text-danger&lt;/button&gt;
+&lt;div class="border border-2 hover:border-2 border-transparent hover:border-success rounded px-4 py-2 transition"&gt;Hover border-success&lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+            </div>
+          </div>
+
+          <!-- 5. Opacity Variants -->
+          <div class="mb-10">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Opacity Modifiers</h3>
+            <p class="text-slate-500 text-sm mb-3">Background opacities: <code class="font-mono text-indigo-600">.bg-{name}/10</code>, <code>/20</code>, <code>/50</code>, <code>/80</code> → <code class="font-mono text-indigo-600">rgba($color, opacity)</code>.<br>
+            Text opacity: <code class="font-mono text-indigo-600">.text-{name}/50</code> → 50% opacity.</p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-xl mb-4">
+              <div class="bg-primary/10 p-3 rounded text-sm border border-primary/20">bg-primary/10</div>
+              <div class="bg-primary/20 p-3 rounded text-sm">bg-primary/20</div>
+              <div class="bg-primary/50 p-3 rounded text-sm text-white">bg-primary/50</div>
+              <div class="bg-primary/80 p-3 rounded text-sm text-white">bg-primary/80</div>
+              <div class="col-span-2 text-primary/50 text-lg font-semibold p-2">text-primary/50 (semi-transparent)</div>
+            </div>
+            <div class="code-block">
+              <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">html</div>
+              </div>
+              <div class="code-body"><pre><code>&lt;div class="bg-success/20 p-4"&gt;Soft success tint&lt;/div&gt;
+&lt;h2 class="text-primary/50"&gt;Faded heading&lt;/h2&gt;
+&lt;button class="bg-danger/80 hover:bg-danger/100"&gt;Almost solid danger&lt;/button&gt;</code></pre></div>
+            </div>
+          </div>
+
+          <!-- 6. Special Utilities -->
+          <div class="mb-6">
+            <h3 class="text-xl font-semibold text-slate-800 mb-2">Special Color Utilities</h3>
+            <p class="text-slate-500 text-sm mb-3">Hardcoded utilities independent of the color map.</p>
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-sm border border-slate-200 rounded-xl">
+                <thead class="bg-slate-50">
+                  <tr><th class="px-4 py-2 text-left">Class</th><th class="px-4 py-2 text-left">Effect</th></tr>
+                </thead>
+                <tbody>
+                  <tr class="border-t"><td class="px-4 py-2 font-mono">.bg-transparent</td><td class="px-4 py-2">background-color: transparent !important</td></tr>
+                  <tr class="border-t"><td class="px-4 py-2 font-mono">.text-transparent</td><td class="px-4 py-2">color: transparent !important</td></tr>
+                  <tr class="border-t"><td class="px-4 py-2 font-mono">.border-transparent</td><td class="px-4 py-2">border-color: transparent !important</td></tr>
+                  <tr class="border-t"><td class="px-4 py-2 font-mono">.bg-current</td><td class="px-4 py-2">background-color: currentColor !important</td></tr>
+                  <tr class="border-t"><td class="px-4 py-2 font-mono">.text-current</td><td class="px-4 py-2">color: currentColor !important</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="mt-4 p-4 bg-slate-50 rounded-xl">
+              <div class="flex gap-4 items-center">
+                <div class="bg-current text-red-600 p-2 rounded">bg-current (red)</div>
+                <span class="text-current text-blue-600">text-current (inherits blue)</span>
+                <div class="bg-transparent border border-slate-300 p-2">transparent background</div>
+              </div>
+              <div class="code-block mt-3">
+                <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">html</div>
+              </div>
+                <div class="code-body"><pre><code>&lt;div style="color: red;"&gt;
+  &lt;div class="bg-current"&gt;Background equals current text color&lt;/div&gt;
+&lt;/div&gt;
+&lt;span class="text-current"&gt;Inherits parent color&lt;/span&gt;</code></pre></div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Background Colors -->
-        <div id="bg-colors" class="mb-16 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Background Color</h2>
-          <p class="text-slate-600 mb-6 text-sm">Use <code class="font-mono text-indigo-600">bg-{color}-{shade}</code> to apply a background. Pair with opacity modifiers for glassmorphism effects.</p>
-          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mb-4">
-            <div class="bg-indigo-600 text-white p-4 rounded-xl"><p class="text-sm font-semibold">bg-indigo-600</p></div>
-            <div class="bg-slate-900 text-white p-4 rounded-xl"><p class="text-sm font-semibold">bg-slate-900</p></div>
-            <div class="bg-green-100 text-green-800 p-4 rounded-xl"><p class="text-sm font-semibold">bg-green-100</p></div>
-            <div class="bg-red-50 text-red-700 p-4 rounded-xl border border-red-200"><p class="text-sm font-semibold">bg-red-50</p></div>
-            <div class="bg-amber-400 text-amber-900 p-4 rounded-xl"><p class="text-sm font-semibold">bg-amber-400</p></div>
-            <div class="bg-indigo-500/20 text-indigo-700 p-4 rounded-xl border border-indigo-200"><p class="text-sm font-semibold">bg-indigo-500/20</p></div>
+        <!-- Full Example: Putting It All Together -->
+        <div id="complete-example" class="mb-20 scroll-mt-24">
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">Complete Example</h2>
+          <p class="text-slate-600 mb-6">See how different color utilities combine to build a realistic component.</p>
+          <div class="bg-slate-50 rounded-2xl p-6 border border-slate-100 mb-6">
+            <div class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-slate-200">
+              <div class="bg-primary/10 p-4 border-b border-primary/20">
+                <h3 class="text-primary font-bold">Utility Card</h3>
+              </div>
+              <div class="p-5 space-y-3">
+                <p class="text-slate-600">This card uses <code class="font-mono text-indigo-600">bg-primary/10</code>, <code class="font-mono text-indigo-600">text-primary</code>, and a <code class="font-mono text-indigo-600">border-primary/20</code>.</p>
+                <div class="flex gap-2">
+                  <button class="bg-success hover:bg-success/80 text-white px-3 py-1 rounded text-sm transition">Success</button>
+                  <button class="border border-danger text-danger hover:bg-danger hover:text-white px-3 py-1 rounded text-sm transition">Danger</button>
+                </div>
+                <div class="text-warning/50 text-sm">Warning text at 50% opacity</div>
+              </div>
+            </div>
           </div>
-          <div class="code-block mb-8">
+          <div class="code-block">
             <div class="code-header">
               <div class="code-dots"><span></span><span></span><span></span></div>
-              <div class="code-label">HTML</div>
+              <div class="code-label">HTML / Complete Card</div>
             </div>
             <div class="code-body">
-              <pre><code>&lt;div class="bg-indigo-600 text-white p-4 rounded-xl"&gt;…&lt;/div&gt;
-&lt;div class="bg-green-100 text-green-800 p-4 rounded-xl"&gt;…&lt;/div&gt;
-&lt;!-- Opacity modifier --&gt;
-&lt;div class="bg-indigo-500/20 text-indigo-700"&gt;…&lt;/div&gt;</code></pre>
+              <pre><code>&lt;div class="bg-primary/10 p-4 border-b border-primary/20"&gt;
+  &lt;h3 class="text-primary"&gt;Utility Card&lt;/h3&gt;
+&lt;/div&gt;
+&lt;div class="p-5"&gt;
+  &lt;button class="bg-success hover:bg-success/80"&gt;Success&lt;/button&gt;
+  &lt;div class="text-warning/50"&gt;Faded warning&lt;/div&gt;
+&lt;/div&gt;</code></pre>
             </div>
           </div>
         </div>
 
-        <!-- Hover Variants -->
-        <div id="hover-colors" class="mb-16 scroll-mt-24">
-          <h2 class="text-2xl font-bold text-slate-900 mb-4">Hover State Variants</h2>
-          <p class="text-slate-600 mb-6 text-sm">Prefix any color utility with <code class="font-mono text-indigo-600">hover:</code> to apply it on mouse hover.</p>
-          <div class="flex flex-wrap gap-4 p-6 bg-slate-50 rounded-2xl border border-slate-100 mb-4">
-            <button class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg transition-colors text-sm font-semibold">Hover me</button>
-            <button class="px-4 py-2 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 rounded-lg transition-colors text-sm font-semibold">Hover text</button>
-            <button class="px-4 py-2 border border-slate-300 hover:border-indigo-400 text-slate-700 rounded-lg transition-colors text-sm font-semibold">Hover border</button>
-          </div>
-          <div class="code-block mb-8">
-            <div class="code-header">
-              <div class="code-dots"><span></span><span></span><span></span></div>
-              <div class="code-label">HTML</div>
+        <!-- Configuration & Dependencies -->
+        <div id="configuration" class="mb-20 scroll-mt-24">
+          <h2 class="text-2xl font-bold text-slate-900 mb-4">Configuration & Dependencies</h2>
+          <div class="space-y-6">
+            <div>
+              <h3 class="text-lg font-semibold text-slate-800 mb-1">Required <code class="font-mono">str-replace</code> function</h3>
+              <p class="text-slate-600 text-sm mb-2">Opacity classes (<code>.bg-primary/20</code>) need a string replace function to escape the slash. Add this to your abstracts:</p>
+              <div class="code-block">
+                <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">scss</div>
+              </div>
+                <div class="code-body"><pre><code>@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + 
+           str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+  }
+  @return $string;
+}</code></pre></div>
+              </div>
             </div>
-            <div class="code-body">
-              <pre><code>&lt;button class="bg-indigo-600 hover:bg-indigo-700 text-white"&gt;…&lt;/button&gt;
-&lt;a class="text-slate-600 hover:text-indigo-600"&gt;…&lt;/a&gt;
-&lt;div class="border-slate-300 hover:border-indigo-400"&gt;…&lt;/div&gt;</code></pre>
+            <div>
+              <h3 class="text-lg font-semibold text-slate-800 mb-1">Customizing the palette</h3>
+              <p class="text-slate-600 text-sm">Add any color (hex, rgb, hsl, named) to <code class="font-mono">$colors</code> and recompile. All utilities regenerate automatically.</p>
+              <div class="code-block mt-2">
+                <div class="code-header">
+                <div class="code-dots"><span></span><span></span><span></span></div>
+                <div class="code-label">scss</div>
+              </div>
+                <div class="code-body"><pre><code>$colors: (
+  'brand': #ff4785,
+  'accent': #00c6a7,
+  'custom': #b94bff
+);</code></pre></div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Chapter Nav -->
+        <!-- Chapter Navigation -->
         <nav class="chapter-nav">
           <a href="installation.html" class="chapter-nav__link">
             <span class="chapter-nav__label">Previous Chapter</span>
@@ -230,16 +321,19 @@
       <p class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-6">On this page</p>
       <nav class="toc-tree">
         <ul class="space-y-4">
-          <li>
-            <a href="#colors" class="text-sm font-semibold text-slate-900 hover:text-indigo-600 transition-colors">Colors &amp; Theming</a>
+          <li><a href="#color-utilities" class="text-sm font-semibold text-slate-900 hover:text-indigo-600">Color Utilities SCSS</a>
             <ul class="ml-4 mt-2 border-l-2 border-slate-100 pl-4 space-y-2 text-sm text-slate-500">
-              <li><a href="#semantic" class="hover:text-indigo-600 transition-colors">Semantic Aliases</a></li>
-              <li><a href="#palette-indigo" class="hover:text-indigo-600 transition-colors">Indigo Palette</a></li>
-              <li><a href="#palette-slate" class="hover:text-indigo-600 transition-colors">Slate Palette</a></li>
-              <li><a href="#all-palettes" class="hover:text-indigo-600 transition-colors">All Color Families</a></li>
-              <li><a href="#text-colors" class="hover:text-indigo-600 transition-colors">Text Color</a></li>
-              <li><a href="#bg-colors" class="hover:text-indigo-600 transition-colors">Background Color</a></li>
-              <li><a href="#hover-colors" class="hover:text-indigo-600 transition-colors">Hover Variants</a></li>
+              <li><a href="#how-it-works" class="hover:text-indigo-600">How It Works</a></li>
+              <li><a href="#generated-classes" class="hover:text-indigo-600">Generated Classes</a>
+                <ul class="ml-3 space-y-1 text-xs">
+                  <li><a href="#generated-classes">Text / Background / Border</a></li>
+                  <li><a href="#generated-classes">Hover Variants</a></li>
+                  <li><a href="#generated-classes">Opacity Modifiers</a></li>
+                  <li><a href="#generated-classes">Special Utilities</a></li>
+                </ul>
+              </li>
+              <li><a href="#complete-example" class="hover:text-indigo-600">Complete Example</a></li>
+              <li><a href="#configuration" class="hover:text-indigo-600">Configuration</a></li>
             </ul>
           </li>
         </ul>
