@@ -98,5 +98,5 @@ For issues and support contact `support@fintech-point.com` or open an issue on t
  
 ## Credits
 
-- **Author:** Md. Fazle Rabbi Bindu <fazlerabbibindu@gmail.com>
+- **Author:** Md. Fazla Rabbi Bindu <fazlerabbibindu@gmail.com>
 - **Maintainer:** Fintech Point (support@fintech-point.com)
