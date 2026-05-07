@@ -1,4 +1,4 @@
-ArarA — Fintech Point UI Design System
+ArarA UI — UI Design System
 
 Utility-first CSS toolkit and Sass source for Fintech Point products.
 
@@ -18,8 +18,8 @@ Quick start
 Clone and install:
 
 ```bash
-git clone <repo-url>
-cd <repo>
+git clone https://github.com/FazleRabbiBindu/arara.git
+cd arara
 npm install
 ```
 
