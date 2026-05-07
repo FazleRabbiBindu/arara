@@ -35,7 +35,9 @@ jobs:
           npm publish --access public
 
       - name: Get package version
-        run: echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          echo "VERSION=$VERSION" >> $GITHUB_ENV   
 
       - name: Add `stable` dist-tag
         env:
