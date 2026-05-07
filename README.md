@@ -63,24 +63,6 @@ npm install <package-name>
 
 Then include `dist/css/style.css` in your app or import it via your bundler.
 
-Publishing notes
-
-- Ensure the `name` in `package.json` is unique on npm. For organizational publishing prefer a scoped name such as `@fintech-point/arara`.
-- `package.json` includes `prepare` / `prepublishOnly` scripts that run `npm run build` so `dist/` is present when publishing.
-- Typical publish workflow:
-
-```bash
-npm login
-npm version patch
-npm publish --access public
-```
-
-Test package locally before publishing:
-
-```bash
-npm pack
-npm install ../arara-0.1.0.tgz  # install the generated tarball in a test project
-```
 
 Contributing
 
