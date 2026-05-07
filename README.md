@@ -58,7 +58,7 @@ Via CDN (after publishing):
 Via NPM (after publishing):
 
 ```bash
-npm install <package-name>
+npm i arara-ui
 ```
 
 Then include `dist/css/style.css` in your app or import it via your bundler.
