@@ -94,9 +94,9 @@ This project is licensed under the MIT License — see the `LICENSE` file.
 
 Contact
 
-For issues and support contact `support@fintech-point.com` or open an issue on the repository.
+For issues and support contact `info@fintech-point.com` or open an issue on the repository.
  
 ## Credits
 
 - **Author:** Md. Fazla Rabbi Bindu <fazlerabbibindu@gmail.com>
-- **Maintainer:** Fintech Point (support@fintech-point.com)
+- **Maintainer:** Fintech Point (info@fintech-point.com)
