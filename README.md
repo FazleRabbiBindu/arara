@@ -65,6 +65,19 @@ JSDelivr (serve from GitHub release or tag):
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@v0.1.4/dist/css/style.css">
 ```
 
+Stable channel (recommended for production)
+
+```html
+<!-- use the `stable` dist-tag (you control when this moves) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/arara-ui@stable/dist/css/style.css">
+<!-- or via unpkg -->
+<link rel="stylesheet" href="https://unpkg.com/arara-ui@stable/dist/css/style.css">
+<!-- or from GitHub if you push a `stable` tag -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@stable/dist/css/style.css">
+```
+
+Note: `@stable` is a dist-tag you manage with `npm dist-tag add` or by publishing with `--tag stable`. It gives you a controlled, stable CDN channel for production.
+
 Via NPM (after publishing):
 
 ```bash

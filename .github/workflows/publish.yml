@@ -33,3 +33,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           npm publish --access public
+
+      - name: Get package version
+        run: echo "VERSION=$(node -p \"require('./package.json').version\")" >> $GITHUB_ENV
+
+      - name: Add `stable` dist-tag
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          # ensure registry is set and tag the just-published version as `stable`
+          npm dist-tag add arara-ui@$VERSION stable --registry https://registry.npmjs.org
