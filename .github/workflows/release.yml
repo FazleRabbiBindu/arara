@@ -36,11 +36,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload CSS asset to release
-        uses: actions/action-upload-release-asset@v1
+        uses: im-open/upload-release-asset@v1
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/css/style.css
-          asset_name: style.css
-          asset_content_type: text/css
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          upload-url: ${{ steps.create_release.outputs.upload_url }}
+          asset-path: dist/css/style.css
+          asset-name: style.css
+          asset-content-type: text/css
