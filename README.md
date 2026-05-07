@@ -49,10 +49,20 @@ dist/css/style.css
 
 Usage examples
 
-Via CDN (after publishing):
+Via CDN (from npm via jsDelivr or unpkg — works after publishing to npm):
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/<package>@<version>/dist/css/style.css">
+<!-- pinned to published version -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/arara-ui@0.1.4/dist/css/style.css">
+<!-- or via unpkg -->
+<link rel="stylesheet" href="https://unpkg.com/arara-ui@0.1.4/dist/css/style.css">
+```
+
+JSDelivr (serve from GitHub release or tag):
+
+```html
+<!-- replace the tag with the release/tag you pushed (example: v0.1.4) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@v0.1.4/dist/css/style.css">
 ```
 
 Via NPM (after publishing):
