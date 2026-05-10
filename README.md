@@ -84,7 +84,26 @@ Via NPM (after publishing):
 npm i arara-ui
 ```
 
-Then include `dist/css/style.css` in your app or import it via your bundler.
+### Import via JavaScript (ESM)
+Automatically injects styles into the document head:
+
+```javascript
+import aru from 'arara-ui';
+
+// aru.cssUrl contains the URL to the stylesheet
+// aru.inject() can be called manually if needed
+```
+
+### Import via JavaScript (CommonJS)
+```javascript
+const aru = require('arara-ui');
+```
+
+Or just import the CSS directly in your bundler:
+```javascript
+import 'arara-ui/css';
+```
+
 
 
 Contributing
