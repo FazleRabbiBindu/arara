@@ -53,16 +53,16 @@ Via CDN (from npm via jsDelivr or unpkg — works after publishing to npm):
 
 ```html
 <!-- pinned to published version -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/arara-ui@0.1.4/dist/css/style.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/arara-ui@0.1.17/dist/css/style.css">
 <!-- or via unpkg -->
-<link rel="stylesheet" href="https://unpkg.com/arara-ui@0.1.4/dist/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/arara-ui@0.1.17/dist/css/style.css">
 ```
 
 JSDelivr (serve from GitHub release or tag):
 
 ```html
-<!-- replace the tag with the release/tag you pushed (example: v0.1.4) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@v0.1.4/dist/css/style.css">
+<!-- replace the tag with the release/tag you pushed (example: v0.1.17) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@v0.1.17/dist/css/style.css">
 ```
 
 Stable channel (recommended for production)
@@ -92,11 +92,15 @@ import aru from 'arara-ui';
 
 // aru.cssUrl contains the URL to the stylesheet
 // aru.inject() can be called manually if needed
+// aru.remove() removes the injected styles from the document
 ```
 
 ### Import via JavaScript (CommonJS)
 ```javascript
 const aru = require('arara-ui');
+
+aru.inject();
+aru.remove();
 ```
 
 Or just import the CSS directly in your bundler:
