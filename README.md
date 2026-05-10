@@ -49,20 +49,18 @@ dist/css/style.css
 
 Usage examples
 
-Via CDN (from npm via jsDelivr or unpkg — works after publishing to npm):
-
 ```html
-<!-- pinned to published version -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/arara-ui@0.1.17/dist/css/style.css">
+<!-- pinned to latest version -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/arara-ui@latest/dist/css/style.css">
 <!-- or via unpkg -->
-<link rel="stylesheet" href="https://unpkg.com/arara-ui@0.1.17/dist/css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/arara-ui@latest/dist/css/style.css">
 ```
 
 JSDelivr (serve from GitHub release or tag):
 
 ```html
-<!-- replace the tag with the release/tag you pushed (example: v0.1.17) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@v0.1.17/dist/css/style.css">
+<!-- use the latest tag to stay up to date -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FazleRabbiBindu/arara@latest/dist/css/style.css">
 ```
 
 Stable channel (recommended for production)
